@@ -9,6 +9,6 @@
 namespace App\Models;
 
 
-class Tider extends Model {
-
+class PatternModel extends Model {
+    protected $table = 'patterns';
 }

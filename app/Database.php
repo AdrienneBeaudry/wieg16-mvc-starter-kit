@@ -5,8 +5,15 @@ namespace App;
 use PDO;
 
 class Database {
+    /**
+     * @var PDO
+     */
     private $pdo;
 
+    /**
+     * @param integer $id
+     * @return Model
+     */
     public function __construct(PDO $pdo){
         $this->pdo = $pdo;
     }
@@ -23,21 +30,26 @@ class Database {
         $stm = $this->pdo->prepare('SELECT * FROM '.$table);
         $success = $stm->execute();
         $rows = $stm->fetchAll(PDO::FETCH_ASSOC);
-        return ($success) ? $row : [];
+        return ($success) ? $rows : [];
     }
 
     public function create($table, $data) {
         $columns = array_keys($data);
+
         $columnSql = implode(',', $columns);
-        'name,quantity,recipe_difficulty';
+        //'category,composition,pattern_id,fabric_date_added';
+
         $bindingSql = ':'.implode(',:', $columns);
-        ':name,:quantity,:recipe_difficulty';
+        //':fabric_img_url, :category, :composition, :pattern_id, :fabric_date_added';
+
         $sql = "INSERT INTO $table ($columnSql) VALUES ($bindingSql)";
         $stm = $this->pdo->prepare($sql);
+
         foreach ($data as $key => $value) {
             $stm->bindValue(':'.$key, $value);
         }
         $status = $stm->execute();
+
         return ($status) ? $this->pdo->lastInsertId() : false;
     }
 
@@ -50,7 +62,8 @@ class Database {
      * Klura ut hur du skall sätt ihop rätt textsträng för x=y...
      * Implode kommer inte ta dig hela vägen den här gången
      * Kanske array_map eller foreach?
-     */
+
+
     public function update($table, $id, $data) {
         $columns = array_keys($data);
         $sql = "UPDATE $table SET (x=y...) WHERE id = :id";
@@ -58,9 +71,13 @@ class Database {
     /**
      * Skriv den här själv!
      * Titta på getById för struktur
-     */
+
     public function delete($table, $id) {
     }
+
+     */
+
+
 }
 
 

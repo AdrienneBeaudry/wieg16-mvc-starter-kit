@@ -1,6 +1,8 @@
 <?php
 use App\Controllers\Controller;
 use App\Database;
+use App\Models\PatternModel;
+use App\Models\FabricModel;
 
 // Sökväg till grundmappen i projektet --- this is a constant in PHP, built-in the language
 $baseDir = __DIR__ . '/..';
@@ -24,18 +26,60 @@ $path = function($uri) {
 
 
 //databse connection
-$dsn = 'mysql:host='.$config['db_host'].';dbname='.$config['db'].';charset='.$config['charset'];
-$pdo = new PDO($dsn, $config['user'], $config['password'], $config['options']);
-
+$dsn = 'mysql:host='.$config['db_host'].';dbname='.$config['db_name'].';charset='.$config['charset'];
+$pdo = new PDO($dsn, $config['db_username'], $config['db_password'], $config['options']);
 $db = new Database($pdo);
-$tider = new Tider($db);
-$tider = $db->getById('bokadetider', 1);
-$tider = $db->getById('bokadetider');
+
+
+$db->create('fabrics', [
+    'fabric_img_url' => "http://www.andrewmartin.co.uk/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/f/a/fabric_chester_taupe.jpg",
+    'pattern_id' => 99999,
+    'composition' => "90% wool, 10% polyester",
+    'category' => "fall, medium-weight, herringbone, patterned"
+]);
+
+
+$pattern = $db->getById('fabrics', 1);
+$patterns = $db->getAll('fabrics');
+
+
+$fabricModel = new fabricModel($db);
+$fabric = $fabricModel->getById(1);
+$fabrics = $fabricModel->getAll();
+$fabricModel->create([
+    'fabric_img_url' => "Falukorv",
+    'pattern_id' => 2,
+    'composition' => "crotte",
+    'category' => "crotte"
+]);
+
 
 // Routing
-$controller = new Controller($baseDir);
+//$controller = new Controller($baseDir);
 
-switch ($path($_SERVER['REQUEST_URI'])) {
+$url = $path($_SERVER['REQUEST_URI']);
+
+switch ($url) {
+    case '/':
+        //$controller->index();
+        require $baseDir.'/views/index.php';
+        break;
+    case '/create-fabric':
+        // Detta är ett enkelt exempel på hur vi skulle kunna spara datan vid en create.
+        // $controller->createRecipe($recipeModel, $_POST);
+        $fabricModel = new fabricModel($db);
+        $fabricId = $fabricModel->create($_POST);
+        // Dirigera tillbaka till förstasidan efter att vi har sparat.
+        // Vi skickar med id:t på receptet som sparades för att kunna använda oss av det i vår vy.
+        header('Location: /?id='.$fabricId);
+        break;
+    default:
+        header('HTTP/1.0 404 Not Found');
+        echo 'Page not found';
+        break;
+}
+
+/*switch ($path($_SERVER['REQUEST_URI'])) {
 	case '/':
 		$controller->index();
 	break;
@@ -47,3 +91,4 @@ switch ($path($_SERVER['REQUEST_URI'])) {
 		echo 'Page not found.';
 	break;
 }
+*/
