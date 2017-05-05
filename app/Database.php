@@ -32,6 +32,15 @@ class Database {
         $rows = $stm->fetchAll(PDO::FETCH_ASSOC);
         return ($success) ? $rows : [];
     }
+/*
+    public function fullJoin($table1, $table2, $overlapColumn) {
+        $stm = $this->pdo->prepare('SELECT * FROM `'.$table1.'`INNER JOIN `'.
+            $table2.'`ON `'.$table1.'`.`'.$overlapColumn.'`=`'.$table2.'`.`'.$overlapColumn.'`');
+        $stm = $success = $stm->execute();
+        $rows = $stm->fetchAll(PDO::FETCH_ASSOC);
+        return ($success) ? $rows : [];
+    }
+*/
 
     public function create($table, $data) {
         $columns = array_keys($data);

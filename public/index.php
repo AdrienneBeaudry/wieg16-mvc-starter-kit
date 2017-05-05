@@ -31,28 +31,37 @@ $pdo = new PDO($dsn, $config['db_username'], $config['db_password'], $config['op
 $db = new Database($pdo);
 
 
+
+//$pattern = $db->getById('patterns', 1);
+$patterns = $db->getAll('patterns');
+
+// $fabric = $db->getByID('fabrics', 1);
+$fabrics = $db->getAll('fabrics');
+
+//$stash = $db->fullJoin('fabrics', 'patterns', 'pattern_id');
+
+/*
+$fabricModel = new fabricModel($db);
+$fabric = $fabricModel->getById(1);
+$fabrics = $fabricModel->getAll();
+*/
+
+/*$fabricModel->create([
+    'fabric_img_url' => "Falukorv",
+    'pattern_id' => 2,
+    'composition' => "crotte",
+    'category' => "crotte"
+]);
+*/
+
+/*
 $db->create('fabrics', [
     'fabric_img_url' => "http://www.andrewmartin.co.uk/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/f/a/fabric_chester_taupe.jpg",
     'pattern_id' => 99999,
     'composition' => "90% wool, 10% polyester",
     'category' => "fall, medium-weight, herringbone, patterned"
 ]);
-
-
-$pattern = $db->getById('fabrics', 1);
-$patterns = $db->getAll('fabrics');
-
-
-$fabricModel = new fabricModel($db);
-$fabric = $fabricModel->getById(1);
-$fabrics = $fabricModel->getAll();
-$fabricModel->create([
-    'fabric_img_url' => "Falukorv",
-    'pattern_id' => 2,
-    'composition' => "crotte",
-    'category' => "crotte"
-]);
-
+*/
 
 // Routing
 //$controller = new Controller($baseDir);

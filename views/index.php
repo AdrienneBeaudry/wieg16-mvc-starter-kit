@@ -9,10 +9,14 @@
 	<meta name="author" content="">
 	<link rel="icon" href="../../favicon.ico">
 
-	<title>Mitt MVC-projekt</title>
+	<title>MVC Project: SEWING PLANNER</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
 
-	<!-- Bootstrap core CSS -->
-	<link href="/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="/css/custom_style.css" rel="stylesheet">
+
+
 </head>
 
 <body>
@@ -27,10 +31,12 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">Project name</a>
+			<a class="navbar-brand" href="#">SEWING PLANNER</a>
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
-			<form class="navbar-form navbar-right">
+
+            <!--
+            <form class="navbar-form navbar-right">
 				<div class="form-group">
 					<input type="text" placeholder="Email" class="form-control">
 				</div>
@@ -39,6 +45,8 @@
 				</div>
 				<button type="submit" class="btn btn-success">Sign in</button>
 			</form>
+			-->
+
 		</div><!--/.navbar-collapse -->
 	</div>
 </nav>
@@ -46,16 +54,40 @@
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
 	<div class="container">
-		<h1>Hello, world!</h1>
-		<p>This is a template for a simple marketing or informational website. It includes a large callout called a
-			jumbotron and three supporting pieces of content. Use it as a starting point to create something more
-			unique.</p>
-		<p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+		<h1></h1>
+		<p></p>
+
 	</div>
 </div>
 
+
 <div class="container">
-	<!-- Example row of columns -->
+
+
+    <div class="row">
+        <?php
+
+        echo "<table>";
+
+        foreach ($fabrics as $row) {
+            echo "<tr><td><img src='".$row['fabric_img_url'].
+                "'/></td><td>".
+                $row['composition'].
+                "</td><td>".
+                $row['category'].
+                "</td><td>".
+                $row['pattern_id'].
+                //"</td><td>".
+               // $row['pattern_img_url'].
+                "</td></tr>";
+        }
+
+        echo "</table>";
+        ?>
+
+    </div>
+
+	<!-- Example row of columns
 	<div class="row">
 		<div class="col-md-4">
 			<h2>Heading</h2>
@@ -79,12 +111,16 @@
 			<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
 		</div>
 	</div>
+    -->
 
 	<hr>
 
 	<footer>
-		<p>&copy; 2016 Company, Inc.</p>
+		<p>&copy; 2016 Word Artisans, Inc.</p>
 	</footer>
+
+
+
 </div> <!-- /container -->
 
 
