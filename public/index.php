@@ -21,7 +21,12 @@ $config = require $baseDir. '/config/config.php';
 
 // Normalisera url-sökvägar  ---
 $path = function($uri) {
-	return ($uri == "/") ? $uri : rtrim($uri, '/');
+    $uri = ($uri == "/") ? $uri : rtrim($uri, '/');
+
+    $uri = explode('?', $uri);
+    $uri = array_shift($uri);
+
+	return $uri;
 };
 
 
@@ -30,6 +35,7 @@ $dsn = 'mysql:host='.$config['db_host'].';dbname='.$config['db_name'].';charset=
 $pdo = new PDO($dsn, $config['db_username'], $config['db_password'], $config['options']);
 $db = new Database($pdo);
 
+$fabricModel = new FabricModel($db);
 
 
 //$pattern = $db->getById('patterns', 1);
@@ -37,8 +43,10 @@ $patterns = $db->getAll('patterns');
 
 // $fabric = $db->getByID('fabrics', 1);
 $fabrics = $db->getAll('fabrics');
-
-//$stash = $db->fullJoin('fabrics', 'patterns', 'pattern_id');
+//$stash = $fabricModel->getById('pattern_id');
+//var_dump($data);
+//die();
+$stash = $db->fullJoin('fabrics', 'patterns', 'pattern_id');
 
 /*
 $fabricModel = new fabricModel($db);
@@ -73,14 +81,20 @@ switch ($url) {
         //$controller->index();
         require $baseDir.'/views/index.php';
         break;
+    case '/update':
+
+        require $baseDir.'/views/update.php';
+        break;
     case '/create-fabric':
+        require $baseDir.'/views/create-fabric.php';
         // Detta är ett enkelt exempel på hur vi skulle kunna spara datan vid en create.
         // $controller->createRecipe($recipeModel, $_POST);
         $fabricModel = new fabricModel($db);
         $fabricId = $fabricModel->create($_POST);
         // Dirigera tillbaka till förstasidan efter att vi har sparat.
         // Vi skickar med id:t på receptet som sparades för att kunna använda oss av det i vår vy.
-        header('Location: /?id='.$fabricId);
+        header('Location: /');
+        // header('Location: /?id='.$fabricId);
         break;
     default:
         header('HTTP/1.0 404 Not Found');

@@ -32,15 +32,15 @@ class Database {
         $rows = $stm->fetchAll(PDO::FETCH_ASSOC);
         return ($success) ? $rows : [];
     }
-/*
+
     public function fullJoin($table1, $table2, $overlapColumn) {
         $stm = $this->pdo->prepare('SELECT * FROM `'.$table1.'`INNER JOIN `'.
             $table2.'`ON `'.$table1.'`.`'.$overlapColumn.'`=`'.$table2.'`.`'.$overlapColumn.'`');
-        $stm = $success = $stm->execute();
+        $success = $stm->execute();
         $rows = $stm->fetchAll(PDO::FETCH_ASSOC);
         return ($success) ? $rows : [];
     }
-*/
+
 
     public function create($table, $data) {
         $columns = array_keys($data);
@@ -53,6 +53,11 @@ class Database {
 
         $sql = "INSERT INTO $table ($columnSql) VALUES ($bindingSql)";
         $stm = $this->pdo->prepare($sql);
+
+
+        //$sql = $db->prepare("INSERT INTO db_fruit (id, type, colour) VALUES (:id, :name, :color)");
+       // $sql->execute(array('id' => $newId, 'name' => $name, 'color' => $color));
+
 
         foreach ($data as $key => $value) {
             $stm->bindValue(':'.$key, $value);
@@ -82,6 +87,9 @@ class Database {
      * Titta på getById för struktur
 
     public function delete($table, $id) {
+     * TIP: no need to fetch method inside DELETE function. Can simply take the same code as GET
+     * stop after execute.
+     *
     }
 
      */

@@ -35,6 +35,10 @@
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 
+                    <a class="submenu" href="/create-fabric">ADD NEW FABRIC</a>
+
+                    <a class="submenu" href="#">ADD NEW PATTERN</a>
+
             <!--
             <form class="navbar-form navbar-right">
 				<div class="form-group">
@@ -54,8 +58,11 @@
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
 	<div class="container">
-		<h1></h1>
-		<p></p>
+        <h1></h1>
+        <p></p>
+
+
+
 
 	</div>
 </div>
@@ -65,27 +72,44 @@
 
 
     <div class="row">
-        <?php
+        <table>
+            <tbody>
+            <?php foreach ($stash as $row) { ?>
+                <tr>
+                    <td>
+                        <div class="pattern_img">
+                            <img src="<?= $row['pattern_img_url'] ?>" alt=""/>
+                        </div>
 
-        echo "<table>";
+                        <h3>
+                            <?= $row['company'] ?>
+                            <?= $row['pattern_id'] ?>
+                        </h3>
 
-        foreach ($fabrics as $row) {
-            echo "<tr><td><img src='".$row['fabric_img_url'].
-                "'/></td><td>".
-                $row['composition'].
-                "</td><td>".
-                $row['category'].
-                "</td><td>".
-                $row['pattern_id'].
-                //"</td><td>".
-               // $row['pattern_img_url'].
-                "</td></tr>";
-        }
+                        <p>
+                        <?= $row['designer'] ?>
+                        </p>
 
-        echo "</table>";
-        ?>
+                    </td>
+                    <td>
+                        <img src="<?= $row['fabric_img_url'] ?>"/>
+                        <br>
+                        <br>
+                        <h5>
+                            <?= $row['category'] ?>
+                        </h5>
+                        <br>
+                        <br>
+                    </td>
 
+
+                </tr>
+            <?php } ?>
+            </tbody>
+        </table>
     </div>
+
+
 
 	<!-- Example row of columns
 	<div class="row">

@@ -1,9 +1,51 @@
+div.pattern_img {
+    width: 300px;
+    height: 300px;
+    border-radius: 300px;
+    overflow: hidden;
+}
+
+div.pattern_img img {
+    position: center;
+    left: 50%;
+    width: 300px;
+    height: auto;
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+}
+
 img {
-    width: 200px;
-    height: 200px;
-    border-radius: 200px;
+    width: 300px;
+    height: 300px;
+    border-radius: 300px;
 }
 
 td {
     padding: 25px;
+}
+
+.greyscale {
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+}
+
+table p, table h3, table h5 {
+    text-align: center;
+}
+
+table h3 {
+    font-size: 33px;
+}
+
+a.submenu {
+    float: left;
+    height: 50px;
+    padding: 15px 15px;
+    font-size: 13px;
+    line-height: 20px;
+}
+
+a.submenu:hover {
+    text-decoration: none;
+
 }
