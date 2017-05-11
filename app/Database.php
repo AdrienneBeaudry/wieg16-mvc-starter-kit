@@ -18,6 +18,9 @@ class Database {
         $this->pdo = $pdo;
     }
 
+    public function getPdo() {
+        return $this->pdo;
+    }
     public function getById($table, $id){
         $stm = $this->pdo->prepare('SELECT * FROM '.$table.' WHERE id = :id');
         $stm->bindParam(':id', $id);
@@ -48,13 +51,15 @@ class Database {
         $columnSql = implode(',', $columns);
         //'category,composition,pattern_id,fabric_date_added';
 
-        $bindingSql = ':'.implode(',:', $columns);
+        $bindingSql = ':'.implode(', :', $columns);
         //':fabric_img_url, :category, :composition, :pattern_id, :fabric_date_added';
+
+        //$sql = 'INSERT INTO `' . $table .'` (`' . $columnSql . '`) VALUES (' . $bindingSql . ')';
 
         $sql = "INSERT INTO $table ($columnSql) VALUES ($bindingSql)";
         $stm = $this->pdo->prepare($sql);
 
-
+        // INSERT INTO `fabrics` (`id`, `category`, `composition`, `pattern_id`, `fabric_img_url`) VALUES (NULL, 'FSD', 'DSJHFDS', 'FHDS', 'FSDFDKJH');
         //$sql = $db->prepare("INSERT INTO db_fruit (id, type, colour) VALUES (:id, :name, :color)");
        // $sql->execute(array('id' => $newId, 'name' => $name, 'color' => $color));
 
@@ -77,11 +82,57 @@ class Database {
      * Implode kommer inte ta dig hela vägen den här gången
      * Kanske array_map eller foreach?
 
+     */
 
+
+    /*
     public function update($table, $id, $data) {
         $columns = array_keys($data);
-        $sql = "UPDATE $table SET (x=y...) WHERE id = :id";
+
+        //$keys före
+        // ['name', 'description']
+        $columns = array_map(function($item) {
+            return $item . '=:' . $item;
+        }, $columns);
+
+        //$columns efter
+        //['name=:name', etc]
+
+        //implode: 'name=:name,description
+
+        $bindingSql= implode(',', $columns);
+
+        $sql = "UPDATE $table SET ($bindingSql) WHERE id = :id";
+
+        $stm = $this->pdo->prepare($sql);
+
+        $data['id']=$id;
+
+        foreach ($data as $key => $value) {
+            $stm->bindValue(':'.$key, $value);
+        }
+        $status = $stm->execute();
+        return $status;
+
     }
+
+    */
+
+    /*
+    public function delete($table, $id){
+
+    }
+
+    public function save($table, $data) {
+        if (isset($data['id'])) {
+            return $this->update($table,$data['id'], $data);
+        }
+        else {
+            return $this->create($table, $data);
+        }
+    }
+*/
+
     /**
      * Skriv den här själv!
      * Titta på getById för struktur
@@ -92,7 +143,7 @@ class Database {
      *
     }
 
-     */
+
 
 
 }
@@ -119,4 +170,4 @@ class Database extends PDO
 }
 
 */
-
+}

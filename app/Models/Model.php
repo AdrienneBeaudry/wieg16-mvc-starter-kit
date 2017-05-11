@@ -23,24 +23,10 @@ abstract class Model {
 
     protected $overlapColumn = '';
 
-    public function __construct(Database $db, $modelData= []) {
+    public function __construct(Database $db, $modelData=[]) {
         $this->db=$db;
     }
 
-    /**
-     * @return integer
-     */
-
-    public function getId() {
-        return $this->id;
-    }
-
-    /**
-     * @param integer $id
-     */
-    public function setId($id) {
-        $this->id = $id;
-    }
     /**
      * @param integer $id
      * @return Model
@@ -70,17 +56,23 @@ abstract class Model {
 
     }
 
-    /*
-    public function __get($name)
-    {
-        // TODO: Implement __get() method.
-    }
 
     public function __set($name, $value)
     {
-        // TODO: Implement __set() method.
+        $this->db[$name]=$value;
     }
 
+    public function __get($name)
+    {
+        if (isset($this->db[$name])) {
+            return $this->db[$name];
+        }
+        else {
+            return false;
+        }
+    }
+
+    /*
     public function __call($name, $arguments)
     {
         $tableName = strtolower(substr($name, 3));

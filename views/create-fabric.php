@@ -59,36 +59,37 @@
     <div class="row justify-content-center">
 
         <div class="col col-md-6">
-            <form action="<?php $_PHP_SELF ?>" method="post">
+            <form method="post" id="reg" name="reg">
                 <div class="form-group row">
                     <label for="category" class="col-2 col-form-label">Fabric Name</label>
                     <div class="col-10">
-                        <input class="form-control" type="text" placeholder="Ex: Cotton Batiste, Printed Voile" id="category">
+                        <input class="form-control" type="text" placeholder="Ex: Cotton Batiste, Printed Voile" name="category">
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label for="composition" class="col-2 col-form-label">Composition</label>
                     <div class="col-10">
-                        <input class="form-control" type="text" placeholder="Ex: 98% Cotton, 2% Spandex" id="composition">
+                        <input class="form-control" type="text" placeholder="Ex: 98% Cotton, 2% Spandex" name="composition">
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label for="patter_id" class="col-2 col-form-label">Pattern #</label>
                     <div class="col-10">
-                        <input class="form-control" type="text" placeholder="Ex: V5689" id="pattern_id">
+                        <input class="form-control"  type="text" placeholder="Ex: V5689" name="pattern_id">
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label for="fabric_img_url" class="col-c col-form-label">Image URL</label>
                     <div class="col-10">
-                        <input class="form-control" type="url" placeholder="Ex: https://www.google.com" id="fabric_img_url">
+                        <input class="form-control" type="text" placeholder="Ex: https://www.google.com" name="fabric_img_url">
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Add</button>
+                <input class="btn btn-primary" type="submit" value="Submit"/>
+
 
             </form>
         </div>
@@ -97,45 +98,6 @@
     </div>
 
 </div>
-
-<?php
-$a=array("Volvo"=>"XC90","BMW"=>"X5","Toyota"=>"Highlander");
-$sqlTest = array_keys($a);
-print_r($sqlTest);
-$bindSqlTest = implode(",", $sqlTest);
-print_r($bindSqlTest);
-$bindingSqlTest = ':'.implode(',:', $sqlTest);
-echo "<br><br>";
-print_r($bindingSqlTest);
-
-?>
-
-<?php ?>
-    <!-- Example row of columns
-    <div class="row">
-        <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-                condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis
-                euismod. Donec sed odio dui. </p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-                condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis
-                euismod. Donec sed odio dui. </p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula
-                porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut
-                fermentum massa justo sit amet risus.</p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div>
-    </div>
-    -->
 
     <hr>
 

@@ -48,6 +48,12 @@ $fabrics = $db->getAll('fabrics');
 //die();
 $stash = $db->fullJoin('fabrics', 'patterns', 'pattern_id');
 
+
+
+
+//$db->update('fabrics', 2, []);
+
+
 /*
 $fabricModel = new fabricModel($db);
 $fabric = $fabricModel->getById(1);
@@ -74,6 +80,9 @@ $db->create('fabrics', [
 // Routing
 //$controller = new Controller($baseDir);
 
+
+
+
 $url = $path($_SERVER['REQUEST_URI']);
 
 switch ($url) {
@@ -86,21 +95,27 @@ switch ($url) {
         require $baseDir.'/views/update.php';
         break;
     case '/create-fabric':
-        require $baseDir.'/views/create-fabric.php';
-        // Detta är ett enkelt exempel på hur vi skulle kunna spara datan vid en create.
-        // $controller->createRecipe($recipeModel, $_POST);
-        $fabricModel = new fabricModel($db);
-        $fabricId = $fabricModel->create($_POST);
-        // Dirigera tillbaka till förstasidan efter att vi har sparat.
-        // Vi skickar med id:t på receptet som sparades för att kunna använda oss av det i vår vy.
-        header('Location: /');
-        // header('Location: /?id='.$fabricId);
+        if (empty($_POST)) {
+            require $baseDir.'/views/create-fabric.php';
+        }
+        else {
+            // Detta är ett enkelt exempel på hur vi skulle kunna spara datan vid en create.
+            // $controller->createRecipe($recipeModel, $_POST);
+            $fabricModel = new fabricModel($db);
+            $fabricId = $fabricModel->create($_POST);
+            // Dirigera tillbaka till förstasidan efter att vi har sparat.
+            // Vi skickar med id:t på receptet som sparades för att kunna använda oss av det i vår vy.
+            header('Location:/');
+            // header('Location: /?id='.$fabricId);
+        }
         break;
     default:
         header('HTTP/1.0 404 Not Found');
         echo 'Page not found';
         break;
 }
+
+
 
 /*switch ($path($_SERVER['REQUEST_URI'])) {
 	case '/':
