@@ -23,14 +23,14 @@ class Database {
     }
     public function getById($table, $id){
         $stm = $this->pdo->prepare('SELECT * FROM '.$table.' WHERE id = :id');
-        $stm->bindParam(':id', $id);
+        $stm->bindValue(':id', $id);
         $success = $stm->execute();
-        $row = $stm->fetch(PDO::FETCH_ASSOC);
+        $row = $stm->fetchAll(PDO::FETCH_ASSOC);
         return ($success) ? $row : [];
     }
 
     public function getAll($table) {
-        $stm = $this->pdo->prepare('SELECT * FROM '.$table);
+        $stm = $this->pdo->prepare("SELECT * FROM $table");
         $success = $stm->execute();
         $rows = $stm->fetchAll(PDO::FETCH_ASSOC);
         return ($success) ? $rows : [];
@@ -118,20 +118,15 @@ class Database {
 
     */
 
-    /*
+
     public function delete($table, $id){
-
+        $stm = $this->pdo->prepare("DELETE FROM $table WHERE id = :id");
+        $stm->bindParam(':id', $id);
+        $success = $stm->execute();
+        return ($success) ? $id : [];
     }
+//DELETE FROM `fabrics` WHERE `fabrics`.`id` = 43
 
-    public function save($table, $data) {
-        if (isset($data['id'])) {
-            return $this->update($table,$data['id'], $data);
-        }
-        else {
-            return $this->create($table, $data);
-        }
-    }
-*/
 
     /**
      * Skriv den här själv!
@@ -142,11 +137,23 @@ class Database {
      * stop after execute.
      *
     }
+    /*
+    public function save($table, $data) {
+        if (isset($data['id'])) {
+            return $this->update($table,$data['id'], $data);
+        }
+        else {
+            return $this->create($table, $data);
+        }
+    }
+*/
 
 
 
 
-}
+
+
+//}
 
 
 

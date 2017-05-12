@@ -34,6 +34,7 @@ abstract class Model {
     public function getById($id) {
         return $this->db->getById($this->table, $id);
     }
+
     public function getAll() {
         return $this->db->getAll($this->table);
     }
@@ -47,9 +48,8 @@ abstract class Model {
         return $this->db->create($this->table, $data);
     }
 
-    //do I need the following two functions?? How should I structure them??
-    public function delete($data) {
-
+    public function delete($id) {
+        return $this->db->delete($this->table, $id);
     }
 
     public function update($data){

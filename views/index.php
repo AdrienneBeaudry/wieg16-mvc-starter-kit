@@ -35,9 +35,11 @@
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 
-                    <a class="submenu" href="/create-fabric">ADD NEW FABRIC</a>
+            <a class="submenu" href="/fabrics">FABRIC COLLECTION</a>
 
-                    <a class="submenu" href="#">ADD NEW PATTERN</a>
+            <a class="submenu" href="/patterns">PATTERN COLLECTION</a>
+
+            <a class="submenu" href="/create-fabric">ADD NEW</a>
 
             <!--
             <form class="navbar-form navbar-right">
