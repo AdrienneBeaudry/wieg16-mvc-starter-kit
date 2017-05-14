@@ -65,11 +65,13 @@
             <tbody>
 
 
-            <form method="post" name="fabrics" action="">
-                <input type="hidden" class="form-control" name="id" value="<?= $_GET['id']; ?>"/>
 
                 <?php foreach ($oneFabric as $row) { ?>
-                <tr>
+
+                <form method="post" name="update-fabric" action="">
+                    <input type="hidden" class="form-control" name="id" value="<?= $_GET['id']; ?>"/>
+
+                    <tr>
 
                     <td>
                         <img src="<?= $row['fabric_img_url'] ?>"/>

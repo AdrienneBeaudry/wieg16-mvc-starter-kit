@@ -109,16 +109,17 @@ switch ($url) {
         }
         break;
     case '/fabrics':
-
-
-
-        if (empty($_POST)) {
+        if (empty($_GET)) {
             require $baseDir.'/views/fabrics.php';
+        }
+        elseif (isset($_GET['modify'])) {
+            $oneFabric = $fabricModel->getById($_GET['id']);
+            require $baseDir.'/views/update.php';
         }
         else {
             // Detta är ett enkelt exempel på hur vi skulle kunna spara datan vid en create.
             // $controller->createRecipe($recipeModel, $_POST);
-            $deleteFabric = $fabricModel->delete($_POST['id']);
+            $deleteFabric = $fabricModel->delete($_GET['id']);
             header('Location: /fabrics');
 
             // Dirigera tillbaka till förstasidan efter att vi har sparat.

@@ -74,13 +74,13 @@
                         <h5>
                             <?= $row['category'] ?>
                         </h5>
-                        <form method="post" id="fabrics" name="fabrics" action="">
+                        <form method="get" id="fabrics" name="fabrics" action="">
                             <input type="hidden" name="modify" value="submit"/>
                             <button class="btn btn-info" type="submit" name="id" value="<?= $row['id']; ?>">
                                 Modify
                             </button>
                         </form>
-                        <form method="post" id="fabrics" name="fabrics" action="">
+                        <form method="get" id="fabrics" name="fabrics" action="">
                             <input type="hidden" name="delete" value="submit"/>
                             <button class="btn btn-danger" type="submit" name="id" value="<?= $row['id']; ?>">Delete
                             </button>
