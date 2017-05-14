@@ -35,7 +35,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
 
-            <a class="submenu" href="#">FABRIC COLLECTION</a>
+            <a class="submenu" href="/fabrics">FABRIC COLLECTION</a>
 
             <a class="submenu" href="/patterns">PATTERN COLLECTION</a>
 

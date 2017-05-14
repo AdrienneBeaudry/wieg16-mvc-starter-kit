@@ -57,33 +57,40 @@
 </div>
 
 
-
 <div class="container">
 
 
     <div class="row">
         <table>
             <tbody>
-            <form method="post" id="fabrics" name="fabrics" action="">
-                <input type="hidden" name="action" value="submit" />
-                <?php foreach ($fabrics as $row) { ?>
-                    <tr>
 
-                        <td>
-                            <img src="<?= $row['fabric_img_url'] ?>"/>
-                            <br>
-                            <br>
-                            <h5>
-                                <?= $row['category'] ?>
-                            </h5>
-                            <button class="btn btn-info" type="submit" name="update" id="">Modify</button>
-                            <button class="btn btn-danger" type="submit" name="id" value="<?= $row['id'];?>">Delete</button>
-                        </td>
+            <?php foreach ($fabrics as $row) { ?>
+                <tr>
+
+                    <td>
+                        <img src="<?= $row['fabric_img_url'] ?>"/>
+                        <br>
+                        <br>
+                        <h5>
+                            <?= $row['category'] ?>
+                        </h5>
+                        <form method="post" id="fabrics" name="fabrics" action="">
+                            <input type="hidden" name="modify" value="submit"/>
+                            <button class="btn btn-info" type="submit" name="id" value="<?= $row['id']; ?>">
+                                Modify
+                            </button>
+                        </form>
+                        <form method="post" id="fabrics" name="fabrics" action="">
+                            <input type="hidden" name="delete" value="submit"/>
+                            <button class="btn btn-danger" type="submit" name="id" value="<?= $row['id']; ?>">Delete
+                            </button>
+                        </form>
+                    </td>
 
 
-                    </tr>
-                <?php } ?>
-            </form>
+                </tr>
+            <?php } ?>
+
             </tbody>
         </table>
     </div>
