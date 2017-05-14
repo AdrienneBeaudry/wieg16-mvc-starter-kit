@@ -65,29 +65,51 @@
             <tbody>
 
 
+            <?php foreach ($oneFabric as $row) { ?>
 
-                <?php foreach ($oneFabric as $row) { ?>
+                <form method="get" name="fabrics" action="">
 
-                <form method="post" name="update-fabric" action="">
-                    <input type="hidden" class="form-control" name="id" value="<?= $_GET['id']; ?>"/>
+                    <input type="hidden" class="form-control" name="update" value="submit"/>
 
                     <tr>
 
-                    <td>
-                        <img src="<?= $row['fabric_img_url'] ?>"/>
-                        <br>
-                        <br>
-                        <h5>
-                            <?= $row['category'] ?>
-                        </h5>
-                        <button class="btn btn-info" type="submit" name="update" id="">Modify</button>
-                        <button class="btn btn-danger" type="submit" name="id" value="<?= $thing['id']; ?>">Delete
-                        </button>
-                    </td>
+                        <td>
+                            <img src="<?= $row['fabric_img_url'] ?>"/>
+                            <br>
+                            <br>
+                            <div class="form-group">
+                                <label>Fabric name:</label>
+                                <input type="text" name="category" class="form-control" value="<?= $row['category'] ?>">
+                            </div>
+                            <div class="form-group">
+                                <label>Composition:</label>
+                                <input type="text" name="composition" class="form-control"
+                                       value="<?= $row['composition'] ?>">
+                            </div>
+                            <div class="form-group">
+                                <label>Pattern number:</label>
+                                <input type="text" name="pattern_id" class="form-control"
+                                       value="<?= $row['pattern_id'] ?>">
+                            </div>
+                            <div class="form-group">
+                                <label>Image URL:</label>
+                                <input type="text" name="fabric_img_url" class="form-control"
+                                       value="<?= $row['fabric_img_url'] ?>">
+                            </div>
 
-                    <?php } ?>
-                </tr>
-            </form>
+                            <button class="btn btn-info" type="submit" id="">Save</button>
+
+                </form>
+                <form method="get" name="fabrics" action="">
+
+                    <input type="hidden" class="form-control" name="delete" value="submit"/>
+
+                    <button class="btn btn-danger" type="submit" name="id" value="<?= $row['id']; ?>">Delete</button>
+                </form>
+                </td>
+
+            <?php } ?>
+            </tr>
 
 
             </tbody>

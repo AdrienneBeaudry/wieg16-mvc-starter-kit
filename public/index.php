@@ -90,6 +90,10 @@ switch ($url) {
         require $baseDir.'/views/index.php';
         break;
     case '/update':
+        if (isset($_GET['update'])) {
+
+        }
+
         $oneFabric = $fabricModel->getById($_GET['id']);
         require $baseDir.'/views/update.php';
         break;
@@ -124,7 +128,6 @@ switch ($url) {
 
             // Dirigera tillbaka till förstasidan efter att vi har sparat.
             // Vi skickar med id:t på receptet som sparades för att kunna använda oss av det i vår vy.
-
             // header('Location: /?id='.$fabricId);
         }
         break;
