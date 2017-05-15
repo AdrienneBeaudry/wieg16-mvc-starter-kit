@@ -71,7 +71,6 @@
 
                 <td>
                     <img src="<?= $row['fabric_img_url'] ?>"/>
-                    <?php print_r($_POST); ?>
                     <br>
                     <br>
                     <form method="post" id="update" name="update" action="">
@@ -103,7 +102,8 @@
 
                         <input type="hidden" name="delete" value="submit"/>
 
-                        <button class="btn btn-danger" type="submit" name="id" value="<?= $row['id']; ?>">Delete</button>
+                        <button class="btn btn-danger" type="submit" name="id" value="<?= $row['id']; ?>">Delete
+                        </button>
                     </form>
                 </td>
 

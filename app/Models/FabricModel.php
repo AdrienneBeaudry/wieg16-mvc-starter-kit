@@ -11,7 +11,8 @@ namespace App\Models;
 
 use App\Database;
 
-class FabricModel extends Model {
+class FabricModel extends Model
+{
 
     protected $table = 'fabrics';
 

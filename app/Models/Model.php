@@ -10,7 +10,8 @@ namespace App\Models;
 
 use App\Database;
 
-abstract class Model {
+abstract class Model
+{
     protected $id;
     /**
      * @return mixed
@@ -23,51 +24,56 @@ abstract class Model {
 
     protected $overlapColumn = '';
 
-    public function __construct(Database $db, $modelData=[]) {
-        $this->db=$db;
+    public function __construct(Database $db, $modelData = [])
+    {
+        $this->db = $db;
     }
 
     /**
      * @param integer $id
      * @return Model
      */
-    public function getById($id) {
+    public function getById($id)
+    {
         return $this->db->getById($this->table, $id);
     }
 
-    public function getAll() {
+    public function getAll()
+    {
         return $this->db->getAll($this->table);
     }
 
-    //is the below necessary?? Is the below correct??
-    public function fullJoin(){
+    public function fullJoin()
+    {
         return $this->db->fullJoin($this->table, $this->table2, $this->overlapColumn);
     }
 
-    public function create($data) {
+    public function create($data)
+    {
         return $this->db->create($this->table, $data);
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         return $this->db->delete($this->table, $id);
     }
 
-    public function update($id, $data){
+    public function update($id, $data)
+    {
         return $this->db->update($this->table, $id, $data);
     }
 
 
     public function __set($name, $value)
     {
-        $this->db[$name]=$value;
+        $this->db[$name] = $value;
     }
 
     public function __get($name)
     {
         if (isset($this->db[$name])) {
             return $this->db[$name];
-        }
-        else {
+        } else {
             return false;
         }
     }

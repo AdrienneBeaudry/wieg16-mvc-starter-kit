@@ -48,8 +48,6 @@
         <p></p>
 
 
-
-
     </div>
 </div>
 
@@ -90,13 +88,11 @@
     </div>
 
 
-
     <hr>
 
     <footer>
         <p>&copy; 2016 Word Artisans, Inc.</p>
     </footer>
-
 
 
 </div> <!-- /container -->
