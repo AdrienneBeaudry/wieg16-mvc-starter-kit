@@ -52,8 +52,8 @@ abstract class Model {
         return $this->db->delete($this->table, $id);
     }
 
-    public function update($data){
-
+    public function update($id, $data){
+        return $this->db->update($this->table, $id, $data);
     }
 
 

@@ -85,8 +85,11 @@ class Database {
      */
 
 
-    /*
+
     public function update($table, $id, $data) {
+        //removes first element of array, in this case update=>submit, which is neede because
+        // I have two forms on update.php, one delete and one update
+        //$data = array_shift($data);
         $columns = array_keys($data);
 
         //$keys före
@@ -97,16 +100,15 @@ class Database {
 
         //$columns efter
         //['name=:name', etc]
-
         //implode: 'name=:name,description
 
         $bindingSql= implode(',', $columns);
 
-        $sql = "UPDATE $table SET ($bindingSql) WHERE id = :id";
+        $sql = "UPDATE $table SET $bindingSql WHERE id=:id";
 
         $stm = $this->pdo->prepare($sql);
 
-        $data['id']=$id;
+        $data['id'] = $id;
 
         foreach ($data as $key => $value) {
             $stm->bindValue(':'.$key, $value);
@@ -115,8 +117,6 @@ class Database {
         return $status;
 
     }
-
-    */
 
 
     public function delete($table, $id){

@@ -67,48 +67,47 @@
 
             <?php foreach ($oneFabric as $row) { ?>
 
-                <form method="get" name="fabrics" action="">
+            <tr>
 
-                    <input type="hidden" class="form-control" name="update" value="submit"/>
+                <td>
+                    <img src="<?= $row['fabric_img_url'] ?>"/>
+                    <?php print_r($_POST); ?>
+                    <br>
+                    <br>
+                    <form method="post" id="update" name="update" action="">
+                        <input type="hidden" name="update" value="submit"/>
+                        <div class="form-group">
+                            <label>Fabric name:</label>
+                            <input type="text" name="category" class="form-control" value="<?= $row['category'] ?>">
+                        </div>
+                        <div class="form-group">
+                            <label>Composition:</label>
+                            <input type="text" name="composition" class="form-control"
+                                   value="<?= $row['composition'] ?>">
+                        </div>
+                        <div class="form-group">
+                            <label>Pattern number:</label>
+                            <input type="text" name="pattern_id" class="form-control"
+                                   value="<?= $row['pattern_id'] ?>">
+                        </div>
+                        <div class="form-group">
+                            <label>Image URL:</label>
+                            <input type="text" name="fabric_img_url" class="form-control"
+                                   value="<?= $row['fabric_img_url'] ?>">
+                        </div>
 
-                    <tr>
+                        <button class="btn btn-info" type="submit" name="id" value="<?= $row['id']; ?>">Save</button>
 
-                        <td>
-                            <img src="<?= $row['fabric_img_url'] ?>"/>
-                            <br>
-                            <br>
-                            <div class="form-group">
-                                <label>Fabric name:</label>
-                                <input type="text" name="category" class="form-control" value="<?= $row['category'] ?>">
-                            </div>
-                            <div class="form-group">
-                                <label>Composition:</label>
-                                <input type="text" name="composition" class="form-control"
-                                       value="<?= $row['composition'] ?>">
-                            </div>
-                            <div class="form-group">
-                                <label>Pattern number:</label>
-                                <input type="text" name="pattern_id" class="form-control"
-                                       value="<?= $row['pattern_id'] ?>">
-                            </div>
-                            <div class="form-group">
-                                <label>Image URL:</label>
-                                <input type="text" name="fabric_img_url" class="form-control"
-                                       value="<?= $row['fabric_img_url'] ?>">
-                            </div>
+                    </form>
+                    <form method="post" id="delete" name="delete" action="">
 
-                            <button class="btn btn-info" type="submit" id="">Save</button>
+                        <input type="hidden" name="delete" value="submit"/>
 
-                </form>
-                <form method="get" name="fabrics" action="">
-
-                    <input type="hidden" class="form-control" name="delete" value="submit"/>
-
-                    <button class="btn btn-danger" type="submit" name="id" value="<?= $row['id']; ?>">Delete</button>
-                </form>
+                        <button class="btn btn-danger" type="submit" name="id" value="<?= $row['id']; ?>">Delete</button>
+                    </form>
                 </td>
 
-            <?php } ?>
+                <?php } ?>
             </tr>
 
 
