@@ -72,24 +72,8 @@ class Database {
         return ($status) ? $this->pdo->lastInsertId() : false;
     }
 
-    /**
-     * ÖVERKURS
-     *
-     * Skriv den här själv!
-     * Titta på create för strukturidéer
-     * Du kan binda parametrar precis som i create
-     * Klura ut hur du skall sätt ihop rätt textsträng för x=y...
-     * Implode kommer inte ta dig hela vägen den här gången
-     * Kanske array_map eller foreach?
-
-     */
-
-
 
     public function update($table, $id, $data) {
-        //removes first element of array, in this case update=>submit, which is neede because
-        // I have two forms on update.php, one delete and one update
-        //$data = array_shift($data);
         $columns = array_keys($data);
 
         //$keys före
@@ -125,56 +109,5 @@ class Database {
         $success = $stm->execute();
         return ($success) ? $id : [];
     }
-//DELETE FROM `fabrics` WHERE `fabrics`.`id` = 43
 
-
-    /**
-     * Skriv den här själv!
-     * Titta på getById för struktur
-
-    public function delete($table, $id) {
-     * TIP: no need to fetch method inside DELETE function. Can simply take the same code as GET
-     * stop after execute.
-     *
-    }
-    /*
-    public function save($table, $data) {
-        if (isset($data['id'])) {
-            return $this->update($table,$data['id'], $data);
-        }
-        else {
-            return $this->create($table, $data);
-        }
-    }
-*/
-
-
-
-
-
-
-//}
-
-
-
-/*
-$config = require('config/config.php');
-
-class Database extends PDO
-{
-    public function __construct($config)
-    {
-        try {
-            parent::__construct($config['db_type'] . ':host=' . $config['db_host'] . ';dbname='
-                . $config['db_name'] . $config['db_username'] . $config['db_password']);
-            $this->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        }
-        catch (PDOException $e)
-        {
-            die('ERROR: ' . $e->getMessage());
-        }
-    }
-}
-
-*/
 }
