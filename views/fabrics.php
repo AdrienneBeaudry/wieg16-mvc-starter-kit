@@ -13,9 +13,12 @@
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom CSS -->
+    <!-- Custom CSS
     <link href="/css/custom_style.css" rel="stylesheet">
+    -->
 
+    <!-- LESS Custom CSS -->
+    <link href="/css/mystyles.less" rel="stylesheet/less" type="text/css"/>
 
 </head>
 
@@ -68,7 +71,9 @@
                 <tr>
 
                     <td>
-                        <img src="<?= $row['fabric_img_url'] ?>"/>
+                        <div class="fabric_img_parent">
+                            <img class="fabric_img" src="<?= $row['fabric_img_url'] ?>"/>
+                        </div>
                         <br>
                         <br>
                         <h5>
@@ -109,6 +114,7 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
+<script src="/js/less.js" type="text/javascript"></script>
 <script src="/js/vendor/jquery-3.2.1.min.js"></script>
 <script src="/js/vendor/bootstrap.min.js"></script>
 </body>
