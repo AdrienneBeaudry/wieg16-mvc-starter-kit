@@ -80,6 +80,7 @@
                         </div>
                         <h5>
                             <?= $row['category'] ?>
+                            <?= $row['amount_meter'] ?>
                         </h5>
                         <a class="btn btn-info" href="/update-fabric?id=<?= $row['id']; ?>">Update</a>
                         <a class="btn btn-danger" href="/do-fabric-delete?id=<?= $row['id']; ?>">Delete</a>
