@@ -30,15 +30,15 @@ class Database {
     }
 
     public function getAll($table) {
-        $stm = $this->pdo->prepare("SELECT * FROM $table");
+        $stm = $this->pdo->prepare("SELECT * FROM $table ORDER BY `created_at` DESC, `updated_at` DESC");
         $success = $stm->execute();
         $rows = $stm->fetchAll(PDO::FETCH_ASSOC);
         return ($success) ? $rows : [];
     }
 
-    public function fullJoin($table1, $table2, $overlapColumn) {
+    public function fullJoin($table1, $table2, $overlapColumn1, $overlapColumn2) {
         $stm = $this->pdo->prepare('SELECT * FROM `'.$table1.'`INNER JOIN `'.
-            $table2.'`ON `'.$table1.'`.`'.$overlapColumn.'`=`'.$table2.'`.`'.$overlapColumn.'`');
+            $table2.'`ON `'.$table1.'`.`'.$overlapColumn1.'`=`'.$table2.'`.`'.$overlapColumn2.'`');
         $success = $stm->execute();
         $rows = $stm->fetchAll(PDO::FETCH_ASSOC);
         return ($success) ? $rows : [];
@@ -80,7 +80,8 @@ class Database {
         $stm = $this->pdo->prepare("DELETE FROM $table WHERE id = :id");
         $stm->bindParam(':id', $id);
         $success = $stm->execute();
-        return ($success) ? $id : [];
+        return $success;
+        //return ($success) ? $id : [];
     }
 
 }

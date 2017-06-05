@@ -14,9 +14,9 @@ class PatternModel extends Model {
 
     public function getPatternsByFabricId($id) {
         $sql = "SELECT {$this->table}.* FROM {$this->table}
-        LEFT JOIN fabrics ON {$this->table}.pattern_id = fabrics.pattern_id
-        WHERE fabrics.pattern_id = :id
-        GROUP BY {$this->table}.pattern_id";
+        LEFT JOIN fabrics ON {$this->table}.fabric_id = fabrics.id
+        WHERE fabrics.id = :id
+        GROUP BY {$this->table}.id";
         $stm = $this->db->getPdo()->prepare($sql);
     }
 }

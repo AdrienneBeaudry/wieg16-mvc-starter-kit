@@ -35,61 +35,112 @@ $pdo = new PDO($dsn, $config['db_username'], $config['db_password'], $config['op
 $db = new Database($pdo);
 
 $fabricModel = new FabricModel($db);
+$patternModel = new PatternModel($db);
 
 $patterns = $db->getAll('patterns');
 $fabrics = $db->getAll('fabrics');
-$stash = $db->fullJoin('fabrics', 'patterns', 'pattern_id');
+$stash = $db->fullJoin('fabrics', 'patterns', 'id', 'fabric_id');
 
 // Routing
-//$controller = new Controller($baseDir);
+$controller = new Controller($baseDir, $db);
 
 $url = $path($_SERVER['REQUEST_URI']);
+
+/*
+$action = 'index';
+$route = trim($url, '/');
+if ($route != "") {
+    $route = explode('-', $route);
+    // $method = ['update', 'fabric']
+    $action = array_shift($route);
+    foreach ($route as $item) {
+        $action .= ucfirst($item);
+    }
+}
+
+if (method_exists($controller, $action)) {
+    // update-fabrics - updateFabrics
+    // $action = 'updateFabrics';
+    $controller->{$action}();
+    die();
+}
+else {
+    header('HTTP/1.0 404 Not Found');
+    echo 'Page not found';
+}*/
 
 switch ($url) {
     case '/':
         require $baseDir . '/views/index.php';
         break;
-    case '/update':
-        if (isset($_POST['delete'])) {
-            $deleteFabric = $fabricModel->delete($_POST['id']);
-            header('Location: /fabrics');
-        } elseif (isset($_POST['update'])) {
-            $updateFabric = $fabricModel->update($_POST['id'], [
-                'category' => $_POST['category'],
-                'composition' => $_POST['composition'],
-                'pattern_id' => $_POST['pattern_id'],
-                'fabric_img_url' => $_POST['fabric_img_url']
-            ]);
-            header('Location: /fabrics');
-        } else {
-            $oneFabric = $fabricModel->getById($_GET['id']);
-            require $baseDir . '/views/update.php';
-        }
-        break;
-    case '/create-fabric':
-        if (empty($_POST)) {
-            require $baseDir . '/views/create-fabric.php';
-        } else {
-            // $controller->createRecipe($recipeModel, $_POST);
-            $fabricModel = new fabricModel($db);
-            $fabricId = $fabricModel->create($_POST);
-            header('Location:/fabrics');
-        }
-        break;
+
     case '/fabrics':
-        if (empty($_GET)) {
-            require $baseDir . '/views/fabrics.php';
-        } elseif (isset($_GET['modify'])) {
-            $oneFabric = $fabricModel->getById($_GET['id']);
-            header('Location: /update?id=' . $_GET['id']);
-        } else {
-            $deleteFabric = $fabricModel->delete($_GET['id']);
-            header('Location: /fabrics');
-        }
+        require $baseDir . '/views/fabrics.php';
         break;
+
     case '/patterns':
         require $baseDir . '/views/patterns.php';
         break;
+
+    case '/create':
+        require $baseDir . '/views/add-new.php';
+        break;
+
+    case '/save-new-pattern':
+        $patternModel = new patternModel($db);
+        $patternId = $patternModel->create($_POST);
+        header('Location:/patterns');
+        break;
+
+    case '/save-new-fabric':
+        $fabricModel = new fabricModel($db);
+        $fabricId = $fabricModel->create($_POST);
+        header('Location:/fabrics');
+        break;
+
+    case '/update-fabric':
+        $oneFabric = $fabricModel->getById($_GET['id']);
+        require $baseDir . '/views/update-fabric.php';
+        break;
+
+    case '/update-pattern':
+        $onePattern = $patternModel->getById($_GET['id']);
+        require $baseDir . '/views/update-pattern.php';
+        break;
+
+    case '/do-fabric-update':
+        $updateFabric = $fabricModel->update($_POST['id'], [
+            'category' => $_POST['category'],
+            'composition' => $_POST['composition'],
+            'pattern_id' => $_POST['pattern_id'],
+            'fabric_img_url' => $_POST['fabric_img_url']
+        ]);
+        header('Location: /fabrics');
+        break;
+
+    case '/do-pattern-update':
+        $updatePattern = $patternModel->update($_POST['id'], [
+            'fabric_id' => $_POST['fabric_id'],
+            'pattern_nr' => $_POST
+            'recommended_fabrics' => $_POST['recommended_fabrics'],
+            'company' => $_POST['company'],
+            'designer' => $_POST['collection'],
+            'season' => $_POST['season'],
+            'pattern_img_url' => $_POST['pattern_img_url']
+        ]);
+        header('Location: /patterns');
+        break;
+
+    case '/do-fabric-delete':
+        $deleteFabric = $fabricModel->delete($_GET['id']);
+        header('Location: /fabrics');
+        break;
+
+    case '/do-pattern-delete':
+        $deletePattern = $patternModel->delete($_GET['pattern_id']);
+        header('Location: /patterns');
+        break;
+
     default:
         header('HTTP/1.0 404 Not Found');
         echo 'Page not found';

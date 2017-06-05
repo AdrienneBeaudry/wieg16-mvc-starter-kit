@@ -18,7 +18,7 @@
      -->
 
     <!-- LESS Custom CSS -->
-    <link href="/css/mystyles.less" rel="stylesheet/less" type="text/css" />
+    <link href="/css/mystyles.less" rel="stylesheet/less" type="text/css"/>
 
 </head>
 
@@ -39,7 +39,7 @@
         <div id="navbar" class="navbar-collapse collapse">
             <a class="submenu" href="/fabrics">FABRIC COLLECTION</a>
             <a class="submenu" href="#">PATTERN COLLECTION</a>
-            <a class="submenu" href="/create-fabric">ADD NEW</a>
+            <a class="submenu" href="/add-new">ADD NEW</a>
         </div><!--/.navbar-collapse -->
     </div>
 </nav>
@@ -71,15 +71,15 @@
 
                         <h3>
                             <?= $row['company'] ?>
-                            <?= $row['pattern_id'] ?>
+                            <?= $row['pattern_nr'] ?>
                         </h3>
 
                         <p>
-                            <?= $row['designer'] ?>
+                            <?= $row['collection'] ?>
                         </p>
 
-                        <button class="btn btn-info" type="submit" value="Update">Modify</button>
-                        <button class="btn btn-danger" type="submit" value="Delete">Delete</button>
+                        <a class="btn btn-info" href="/update-pattern?id=<?= $row['id']; ?>">Update</a>
+                        <a class="btn btn-danger" href="/do-pattern-delete?id=<?= $row['id']; ?>">Delete</a>
 
                     </td>
 

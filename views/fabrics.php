@@ -1,3 +1,7 @@
+<!-- TO DO
+* align center
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,7 +46,7 @@
 
             <a class="submenu" href="/patterns">PATTERN COLLECTION</a>
 
-            <a class="submenu" href="/create-fabric">ADD NEW</a>
+            <a class="submenu" href="/add-new">ADD NEW</a>
 
 
         </div><!--/.navbar-collapse -->
@@ -74,27 +78,16 @@
                         <div class="fabric_img_parent">
                             <img class="fabric_img" src="<?= $row['fabric_img_url'] ?>"/>
                         </div>
-                        <br>
-                        <br>
                         <h5>
                             <?= $row['category'] ?>
                         </h5>
-                        <form method="get" id="fabrics" name="fabrics" action="">
-                            <input type="hidden" name="modify" value="submit"/>
-                            <button class="btn btn-info" type="submit" name="id" value="<?= $row['id']; ?>">
-                                Modify
-                            </button>
-                        </form>
-                        <form method="get" id="fabrics" name="fabrics" action="">
-                            <input type="hidden" name="delete" value="submit"/>
-                            <button class="btn btn-danger" type="submit" name="id" value="<?= $row['id']; ?>">Delete
-                            </button>
-                        </form>
+                        <a class="btn btn-info" href="/update-fabric?id=<?= $row['id']; ?>">Update</a>
+                        <a class="btn btn-danger" href="/do-fabric-delete?id=<?= $row['id']; ?>">Delete</a>
                     </td>
-
 
                 </tr>
             <?php } ?>
+
 
             </tbody>
         </table>

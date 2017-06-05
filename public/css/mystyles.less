@@ -4,9 +4,6 @@
   filter: grayscale(100%);
 }
 
-
-
-
 .pattern_img_parent {
   width: 300px;
   height: 300px;
@@ -14,11 +11,15 @@
   overflow: hidden;
 }
 
-.pattern_img {
+.round_img() {
   position: center;
   left: 50%;
   width: 300px;
   height: auto;
+}
+
+.pattern_img {
+  .round_img;
   #greyscale
 }
 .fabric_img_parent {
@@ -26,7 +27,7 @@
 }
 
 .fabric_img {
-
+  .round_img;
 }
 
 img {
@@ -63,5 +64,9 @@ a.submenu {
 
 a.submenu:hover {
   text-decoration: none;
+}
 
+form#inline_btn {
+  display: inline;
+  margin: 3px;
 }

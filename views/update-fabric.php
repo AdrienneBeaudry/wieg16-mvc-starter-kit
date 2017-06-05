@@ -43,7 +43,7 @@
 
             <a class="submenu" href="/patterns">PATTERN COLLECTION</a>
 
-            <a class="submenu" href="#">ADD NEW</a>
+            <a class="submenu" href="/add-new">ADD NEW</a>
 
 
         </div><!--/.navbar-collapse -->
@@ -56,61 +56,75 @@
         <h1></h1>
         <p></p>
 
+
     </div>
 </div>
 
 
 <div class="container">
 
-    <div class="row justify-content-center">
 
-        <div class="col col-md-6">
-            <form method="post" id="reg" name="reg">
-                <div class="form-group row">
-                    <label for="category" class="col-2 col-form-label">Fabric Name</label>
-                    <div class="col-10">
-                        <input class="form-control" type="text" placeholder="Ex: Cotton Batiste, Printed Voile" name="category">
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label for="composition" class="col-2 col-form-label">Composition</label>
-                    <div class="col-10">
-                        <input class="form-control" type="text" placeholder="Ex: 98% Cotton, 2% Spandex" name="composition">
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label for="patter_id" class="col-2 col-form-label">Pattern #</label>
-                    <div class="col-10">
-                        <input class="form-control"  type="text" placeholder="Ex: V5689" name="pattern_id">
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label for="fabric_img_url" class="col-c col-form-label">Image URL</label>
-                    <div class="col-10">
-                        <input class="form-control" type="text" placeholder="Ex: https://www.google.com" name="fabric_img_url">
-                    </div>
-                </div>
-
-                <input class="btn btn-primary" type="submit" value="Submit"/>
+    <div class="row">
+        <table>
+            <tbody>
 
 
-            </form>
-        </div>
+            <?php foreach ($oneFabric as $row) { ?>
+
+            <tr>
+
+                <td>
+                    <img src="<?= $row['fabric_img_url'] ?>"/>
+                    <br>
+                    <br>
+                    <form method="post" id="inline_btn" name="update" action="/do-fabric-update">
+                        <input type="hidden" name="update" value="submit"/>
+                        <div class="form-group">
+                            <label>Fabric name:</label>
+                            <input type="text" name="category" class="form-control" value="<?= $row['category'] ?>">
+                        </div>
+                        <div class="form-group">
+                            <label>Composition:</label>
+                            <input type="text" name="composition" class="form-control"
+                                   value="<?= $row['composition'] ?>">
+                        </div>
+                        <div class="form-group">
+                            <label>Pattern number:</label>
+                            <input type="text" name="pattern_id" class="form-control"
+                                   value="<?= $row['pattern_id'] ?>">
+                        </div>
+                        <div class="form-group">
+                            <label>Image URL:</label>
+                            <input type="text" name="fabric_img_url" class="form-control"
+                                   value="<?= $row['fabric_img_url'] ?>">
+                        </div>
+
+                        <button class="btn btn-info" id="inline_btn" type="submit" name="id" value="<?= $row['id']; ?>">Update</button>
+
+                    </form>
+                    <form method="post" id="inline_btn" name="delete" action="/do-fabric-delete">
+
+                        <input type="hidden" name="delete" value="submit"/>
+
+                        <button class="btn btn-danger" id="inline_btn" type="submit" name="id" value="<?= $row['id']; ?>">Delete
+                        </button>
+                    </form>
+                </td>
+
+                <?php } ?>
+            </tr>
 
 
+            </tbody>
+        </table>
     </div>
 
-</div>
 
     <hr>
 
     <footer>
         <p>&copy; 2016 Word Artisans, Inc.</p>
     </footer>
-
 
 
 </div> <!-- /container -->

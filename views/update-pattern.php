@@ -43,7 +43,7 @@
 
             <a class="submenu" href="/patterns">PATTERN COLLECTION</a>
 
-            <a class="submenu" href="/create-fabric">ADD NEW</a>
+            <a class="submenu" href="/add-new">ADD NEW</a>
 
 
         </div><!--/.navbar-collapse -->
@@ -77,7 +77,7 @@
                     <img src="<?= $row['fabric_img_url'] ?>"/>
                     <br>
                     <br>
-                    <form method="post" id="update" name="update" action="">
+                    <form method="post" id="inline_btn" name="update" action="/do-pattern-update">
                         <input type="hidden" name="update" value="submit"/>
                         <div class="form-group">
                             <label>Fabric name:</label>
@@ -99,14 +99,14 @@
                                    value="<?= $row['fabric_img_url'] ?>">
                         </div>
 
-                        <button class="btn btn-info" type="submit" name="id" value="<?= $row['id']; ?>">Save</button>
+                        <button class="btn btn-info" id="inline_btn" type="submit" name="id" value="<?= $row['id']; ?>">Update</button>
 
                     </form>
-                    <form method="post" id="delete" name="delete" action="">
+                    <form method="post" id="inline_btn" name="delete" action="">
 
                         <input type="hidden" name="delete" value="submit"/>
 
-                        <button class="btn btn-danger" type="submit" name="id" value="<?= $row['id']; ?>">Delete
+                        <button class="btn btn-danger" id="inline_btn" type="submit" name="id" value="<?= $row['id']; ?>">Delete
                         </button>
                     </form>
                 </td>

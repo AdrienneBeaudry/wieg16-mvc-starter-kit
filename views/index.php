@@ -43,7 +43,7 @@
 
             <a class="submenu" href="/patterns">PATTERN COLLECTION</a>
 
-            <a class="submenu" href="/create-fabric">ADD NEW</a>
+            <a class="submenu" href="/add-new">ADD NEW</a>
 
 
         </div><!--/.navbar-collapse -->
