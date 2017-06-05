@@ -112,7 +112,6 @@ switch ($url) {
         $updateFabric = $fabricModel->update($_POST['id'], [
             'category' => $_POST['category'],
             'composition' => $_POST['composition'],
-            'pattern_id' => $_POST['pattern_id'],
             'fabric_img_url' => $_POST['fabric_img_url']
         ]);
         header('Location: /fabrics');
@@ -121,11 +120,11 @@ switch ($url) {
     case '/do-pattern-update':
         $updatePattern = $patternModel->update($_POST['id'], [
             'fabric_id' => $_POST['fabric_id'],
-            'pattern_nr' => $_POST
-            'recommended_fabrics' => $_POST['recommended_fabrics'],
+            'pattern_nr' => $_POST['pattern_nr'],
             'company' => $_POST['company'],
-            'designer' => $_POST['collection'],
+            'collection' => $_POST['collection'],
             'season' => $_POST['season'],
+            'recommended_fabrics' => $_POST['recommended_fabrics'],
             'pattern_img_url' => $_POST['pattern_img_url']
         ]);
         header('Location: /patterns');
@@ -137,7 +136,7 @@ switch ($url) {
         break;
 
     case '/do-pattern-delete':
-        $deletePattern = $patternModel->delete($_GET['pattern_id']);
+        $deletePattern = $patternModel->delete($_GET['id']);
         header('Location: /patterns');
         break;
 
