@@ -80,7 +80,7 @@
                         </h3>
 
                         <p>
-                            <?= $row['designer'] ?>
+                            <?= $row['collection'] ?>
                         </p>
 
                     </td>

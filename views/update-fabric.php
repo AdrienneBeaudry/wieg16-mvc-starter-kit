@@ -89,9 +89,9 @@
                                    value="<?= $row['composition'] ?>">
                         </div>
                         <div class="form-group">
-                            <label>Pattern number:</label>
-                            <input type="text" name="pattern_id" class="form-control"
-                                   value="<?= $row['pattern_id'] ?>">
+                            <label>Amount (in meters):</label>
+                            <input type="text" name="amount_meter" class="form-control"
+                                   value="<?= $row['amount_meter'] ?>">
                         </div>
                         <div class="form-group">
                             <label>Image URL:</label>

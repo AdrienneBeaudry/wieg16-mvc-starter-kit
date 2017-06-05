@@ -80,23 +80,38 @@
                     <form method="post" id="inline_btn" name="update" action="/do-pattern-update">
                         <input type="hidden" name="update" value="submit"/>
                         <div class="form-group">
-                            <label>Fabric name:</label>
-                            <input type="text" name="category" class="form-control" value="<?= $row['category'] ?>">
+                            <label>Pattern #:</label>
+                            <input type="text" name="pattern #" class="form-control" value="<?= $row['pattern_nr'] ?>">
                         </div>
                         <div class="form-group">
-                            <label>Composition:</label>
-                            <input type="text" name="composition" class="form-control"
-                                   value="<?= $row['composition'] ?>">
+                            <label>Company:</label>
+                            <input type="text" name="company" class="form-control"
+                                   value="<?= $row['company'] ?>">
+                        </div>
+                        <div class="form-group">
+                            <label>Collection:</label>
+                            <input type="text" name="collection" class="form-control"
+                                   value="<?= $row['collection'] ?>">
+                        </div>
+                        <div class="form-group">
+                            <label>Season:</label>
+                            <input type="text" name="season" class="form-control"
+                                   value="<?= $row['season'] ?>">
+                        </div>
+                        <div class="form-group">
+                            <label>Recommended Fabrics:</label>
+                            <input type="text" name="recommended_fabrics" class="form-control"
+                                   value="<?= $row['recommended_fabrics'] ?>">
                         </div>
                         <div class="form-group">
                             <label>Pattern number:</label>
-                            <input type="text" name="pattern_id" class="form-control"
-                                   value="<?= $row['pattern_id'] ?>">
+                            <input type="text" name="pattern_nr" class="form-control"
+                                   value="<?= $row['pattern_nr'] ?>">
                         </div>
                         <div class="form-group">
-                            <label>Image URL:</label>
-                            <input type="text" name="fabric_img_url" class="form-control"
-                                   value="<?= $row['fabric_img_url'] ?>">
+                            <label>Pattern Image URL:</label>
+                            <input type="text" name="pattern_img_url" class="form-control"
+                                   value="<?= $row['pattern_img_url'] ?>">
                         </div>
 
                         <button class="btn btn-info" id="inline_btn" type="submit" name="id" value="<?= $row['id']; ?>">Update</button>
