@@ -117,13 +117,13 @@
                         <button class="btn btn-info" id="inline_btn" type="submit" name="id" value="<?= $row['id']; ?>">Update</button>
 
                     </form>
-                    <form method="post" id="inline_btn" name="delete" action="">
+                    <!--form method="post" id="inline_btn" name="delete" action="">
 
                         <input type="hidden" name="delete" value="submit"/>
 
                         <button class="btn btn-danger" id="inline_btn" type="submit" name="id" value="<?= $row['id']; ?>">Delete
                         </button>
-                    </form>
+                    </form-->
                 </td>
 
                 <?php } ?>
