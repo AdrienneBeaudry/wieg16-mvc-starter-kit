@@ -72,9 +72,9 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="patter_id" class="col-2 col-form-label">Pattern #</label>
+                    <label for="pattern_nr" class="col-2 col-form-label">Pattern #</label>
                     <div class="col-10">
-                        <input class="form-control" type="text" placeholder="Ex: V5689" name="pattern_id">
+                        <input class="form-control" type="text" placeholder="Ex: V5689" name="pattern_nr">
                     </div>
                 </div>
 
@@ -87,10 +87,10 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="designer" class="col-2 col-form-label">Designer</label>
+                    <label for="collection" class="col-2 col-form-label">Designer</label>
                     <div class="col-10">
-                        <input class="form-control" type="text" placeholder="Donna Karen"
-                               name="designer">
+                        <input class="form-control" type="text" placeholder="Amazing Fit, Donna Karen New York"
+                               name="collection">
                     </div>
                 </div>
 
@@ -104,7 +104,14 @@
                 <div class="form-group row">
                     <label for="season" class="col-2 col-form-label">Season</label>
                     <div class="col-10">
-                        <input class="form-control" type="text" placeholder="Ex: SS2017 or FW2016" name="pattern_id">
+                        <input class="form-control" type="text" placeholder="Ex: SS2017 or FW2016" name="season">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="fabric ideas" class="col-2 col-form-label">Could be used with following fabrics from my stash...</label>
+                    <div class="col-10">
+                        <input class="form-control" type="text" placeholder="Ex: 25, 30" name="fabric_id">
                     </div>
                 </div>
 
@@ -149,12 +156,12 @@
                     </div>
                 </div>
 
-                <div class="form-group row">
-                    <label for="pattern_id" class="col-2 col-form-label">Intended for Pattern #</label>
+                <!--div class="form-group row">
+                    <label for="id" class="col-2 col-form-label">Intended for Pattern #</label>
                     <div class="col-10">
-                        <input class="form-control" type="text" placeholder="Ex: V5689" name="pattern_id">
+                        <input class="form-control" type="text" placeholder="Ex: V5689" name="id">
                     </div>
-                </div>
+                </div-->
 
                 <div class="form-group row">
                     <label for="fabric_img_url" class="col-c col-form-label">Fabric Image URL</label>
