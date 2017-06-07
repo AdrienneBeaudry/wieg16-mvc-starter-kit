@@ -37,9 +37,14 @@ $db = new Database($pdo);
 $fabricModel = new FabricModel($db);
 $patternModel = new PatternModel($db);
 
-$patterns = $db->getAll('patterns');
-$fabrics = $db->getAll('fabrics');
-$stash = $db->fullJoin('fabrics', 'patterns', 'id', 'fabric_id');
+//$patterns = $db->getAllOrder('patterns');
+$fabrics = $db->getAllOrder('fabrics');
+$viewData = []; // loop through this guy in views/index
+foreach ($fabrics as $fabric) {
+    $db->getRelatedPatterns($fabric['id']);
+    $viewData[] = ['fabric' => $fabric, 'patterns' => $db->getRelatedPatterns($fabric['id'])];
+}
+//$stash = $db->getAll('fabrics_patterns');
 
 // Routing
 $controller = new Controller($baseDir, $db);

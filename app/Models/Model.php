@@ -43,10 +43,16 @@ abstract class Model
         return $this->db->getAll($this->table);
     }
 
-    public function fullJoin()
+    public function getAllOrder()
     {
-        return $this->db->fullJoin($this->table, $this->table2, $this->overlapColumn);
+        return $this->db->getAllOrder($this->table);
     }
+
+    /*public function fullJoin()
+    {
+        return $this->db->fullJoin($this->table, $this->table2, $this->overlapColumn1, $this->overlapColumn2);
+    }
+    */
 
     public function create($data)
     {

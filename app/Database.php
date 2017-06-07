@@ -30,6 +30,13 @@ class Database {
     }
 
     public function getAll($table) {
+        $stm = $this->pdo->prepare("SELECT * FROM $table");
+        $success = $stm->execute();
+        $rows = $stm->fetchAll(PDO::FETCH_ASSOC);
+        return ($success) ? $rows : [];
+    }
+
+    public function getAllOrder($table) {
         $stm = $this->pdo->prepare("SELECT * FROM $table ORDER BY `created_at` DESC, `updated_at` DESC");
         $success = $stm->execute();
         $rows = $stm->fetchAll(PDO::FETCH_ASSOC);
@@ -82,6 +89,30 @@ class Database {
         $success = $stm->execute();
         return $success;
         //return ($success) ? $id : [];
+    }
+
+    //gets all patterns related to a particular fabric
+    public function getRelatedPatterns($id) {
+        $stm = $this->pdo->prepare("SELECT * FROM patterns 
+                  LEFT JOIN fabrics_patterns 
+                  ON patterns.id = fabrics_patterns.pattern_id
+                  WHERE fabrics_patterns.fabric_id = :id");
+        $stm->bindParam(':id', $id);
+        $success = $stm->execute();
+        $rows = $stm->fetchAll(PDO::FETCH_ASSOC);
+        return ($success) ? $rows : [];
+    }
+
+    //gets all fabrics related to a particular pattern
+    public function getRelatedFabrics($id) {
+        $stm = $this->pdo->prepare("SELECT * FROM fabrics 
+                  LEFT JOIN fabrics_patterns 
+                  ON fabrics.id = fabrics_patterns.fabric_id
+                  WHERE fabrics_patterns.pattern_id = :id");
+        $stm->bindParam(':id', $id);
+        $success = $stm->execute();
+        $rows = $stm->fetchAll(PDO::FETCH_ASSOC);
+        return ($success) ? $rows : [];
     }
 
 }

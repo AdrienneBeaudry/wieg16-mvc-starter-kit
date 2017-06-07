@@ -67,7 +67,7 @@
     <div class="row">
         <table>
             <tbody>
-            <?php foreach ($stash as $row) { ?>
+            <?php foreach ($viewData as $row) { ?>
                 <tr>
                     <td>
                         <div class="pattern_img_parent">
@@ -76,7 +76,7 @@
 
                         <h3>
                             <?= $row['company'] ?>
-                            <?= $row['pattern_id'] ?>
+                            <?= $row['pattern_nr'] ?>
                         </h3>
 
                         <p>
