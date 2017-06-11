@@ -43,7 +43,7 @@
 
             <a class="submenu" href="/patterns">PATTERN COLLECTION</a>
 
-            <a class="submenu" href="/add-new">ADD NEW</a>
+            <a class="submenu" href="/create">ADD NEW</a>
 
 
         </div><!--/.navbar-collapse -->
@@ -56,7 +56,6 @@
         <h1></h1>
         <p></p>
 
-
     </div>
 </div>
 
@@ -68,35 +67,63 @@
         <table>
             <tbody>
             <?php foreach ($viewData as $row) { ?>
-                <tr>
-                    <td>
+            <tr>
+                <td>
+                    <br>
+                    <div class="fabric_img_parent">
+                        <img class="fabric_img" src="<?= $row['fabric']['fabric_img_url'] ?>"/>
+                    </div>
+                    <br>
+                    <br>
+                    <h5>
+                        <?= $row['fabric']['category'] ?>
+                    </h5>
+                    <br>
+                    <br>
+                </td>
+                <td>
+                    <?php foreach ($row['patterns'] as $pattern) { ?>
                         <div class="pattern_img_parent">
-                            <img class="pattern_img" src="<?= $row['pattern_img_url'] ?>" alt=""/>
+                            <img class="pattern_img" src="<?= $pattern['pattern_img_url'] ?>"/>
                         </div>
-
-                        <h3>
-                            <?= $row['company'] ?>
-                            <?= $row['pattern_nr'] ?>
-                        </h3>
-
-                        <p>
-                            <?= $row['collection'] ?>
-                        </p>
-
-                    </td>
+                    <?php } ?>
+                </td>
+            </tr>
+            <?php  } ?>
+            <?php foreach ($viewData as $row=>$tbl) { ?>
+                <tr>
                     <td>
                         <br>
                         <div class="fabric_img_parent">
-                            <img class="fabric_img" src="<?= $row['fabric_img_url'] ?>"/>
+                            <img class="fabric_img" src="<?= $row['fabric'][$value]['fabric_img_url'] ?>"/>
                         </div>
                         <br>
                         <br>
                         <h5>
-                            <?= $row['category'] ?>
+                            <?= $row['fabric'][$value]['category'] ?>
                         </h5>
                         <br>
                         <br>
                     </td>
+                <?php } ?>
+                <?php foreach ($tbl as $value) { ?>
+
+                    <td>
+                        <div class="pattern_img_parent">
+                            <img class="pattern_img" src="<?= $row['patterns'][$value]['pattern_img_url'] ?>" alt=""/>
+                        </div>
+
+                        <h3>
+                            <?= $row['patterns'][$value]['company'] ?>
+                            <?= $row['patterns'][$value]['pattern_nr'] ?>
+                        </h3>
+
+                        <p>
+                            <?= $row['patterns'][$value]['collection'] ?>
+                        </p>
+
+                    </td>
+
 
 
                 </tr>

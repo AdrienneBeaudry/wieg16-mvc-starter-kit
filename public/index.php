@@ -38,12 +38,8 @@ $fabricModel = new FabricModel($db);
 $patternModel = new PatternModel($db);
 
 //$patterns = $db->getAllOrder('patterns');
-$fabrics = $db->getAllOrder('fabrics');
-$viewData = []; // loop through this guy in views/index
-foreach ($fabrics as $fabric) {
-    $db->getRelatedPatterns($fabric['id']);
-    $viewData[] = ['fabric' => $fabric, 'patterns' => $db->getRelatedPatterns($fabric['id'])];
-}
+$pairedFabrics = $db->getAll('fabrics_patterns');
+$viewData = $fabricModel->getAllWithPatterns(); // loop through this guy in views/index
 //$stash = $db->getAll('fabrics_patterns');
 
 // Routing
@@ -80,14 +76,18 @@ switch ($url) {
         break;
 
     case '/fabrics':
+        $fabrics = $fabricModel->getAllOrder();
         require $baseDir . '/views/fabrics.php';
         break;
 
     case '/patterns':
+        $patterns = $patternModel->getAllOrder();
         require $baseDir . '/views/patterns.php';
         break;
 
     case '/create':
+        $fabrics = $fabricModel->getAll();
+        $patterns = $patternModel->getAll();
         require $baseDir . '/views/add-new.php';
         break;
 

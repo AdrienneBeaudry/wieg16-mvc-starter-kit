@@ -109,17 +109,18 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="fabric ideas" class="col-2 col-form-label">Could be used with following fabrics from my stash...</label>
-                    <div class="col-10">
-                        <input class="form-control" type="text" placeholder="Ex: 25, 30" name="fabric_id">
-                    </div>
-                </div>
-
-                <div class="form-group row">
                     <label for="pattern_img_url" class="col-c col-form-label">Pattern Image URL</label>
                     <div class="col-10">
                         <input class="form-control" type="text" placeholder="Ex: https://www.google.com"
                                name="pattern_img_url">
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <label for="fabric ideas" class="col-2 col-form-label">Could be used with following fabric(s) from my stash...</label>
+                    <div class="col-10">
+                        <input class="form-control" type="text" placeholder="Ex: 25, 30" name="fabric_id">
                     </div>
                 </div>
 
@@ -156,13 +157,6 @@
                     </div>
                 </div>
 
-                <!--div class="form-group row">
-                    <label for="id" class="col-2 col-form-label">Intended for Pattern #</label>
-                    <div class="col-10">
-                        <input class="form-control" type="text" placeholder="Ex: V5689" name="id">
-                    </div>
-                </div-->
-
                 <div class="form-group row">
                     <label for="fabric_img_url" class="col-c col-form-label">Fabric Image URL</label>
                     <div class="col-10">
@@ -170,6 +164,14 @@
                                name="fabric_img_url">
                     </div>
                 </div>
+
+                <div class="form-group row">
+                    <label for="id" class="col-2 col-form-label">Intended for Pattern #</label>
+                    <div class="col-10">
+                        <input class="form-control" type="text" placeholder="Ex: V5689" name="id">
+                    </div>
+                </div>
+
 
                 <div class="row">
                 <input class="btn btn-primary" type="submit" value="Submit"/>

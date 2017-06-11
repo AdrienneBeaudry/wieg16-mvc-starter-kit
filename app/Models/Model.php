@@ -16,7 +16,7 @@ abstract class Model
     /**
      * @return mixed
      */
-    private $db;
+    protected $db;
 
     protected $table = '';
 

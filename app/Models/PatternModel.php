@@ -19,4 +19,19 @@ class PatternModel extends Model {
         GROUP BY {$this->table}.id";
         $stm = $this->db->getPdo()->prepare($sql);
     }
+
+    public function getAllWithFabrics() {
+        $patterns = array_map(function($item) {
+            return $item['pattern_id'];
+        }, $this->db->getAll('fabrics_patterns'));
+        $patterns = array_unique($patterns);
+
+        return array_map(function($pattern) {
+            return [
+                "pattern" => $this->db->getById('patterns', $pattern),
+                "fabrics" =>$this->db->getRelatedFabrics($pattern)
+            ];
+        }, $patterns);
+    }
+
 }

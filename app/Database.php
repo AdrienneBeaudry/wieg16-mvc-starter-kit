@@ -25,7 +25,7 @@ class Database {
         $stm = $this->pdo->prepare('SELECT * FROM '.$table.' WHERE id = :id');
         $stm->bindValue(':id', $id);
         $success = $stm->execute();
-        $row = $stm->fetchAll(PDO::FETCH_ASSOC);
+        $row = $stm->fetch(PDO::FETCH_ASSOC);
         return ($success) ? $row : [];
     }
 
