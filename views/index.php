@@ -90,44 +90,8 @@
                 </td>
             </tr>
             <?php  } ?>
-            <?php foreach ($viewData as $row=>$tbl) { ?>
-                <tr>
-                    <td>
-                        <br>
-                        <div class="fabric_img_parent">
-                            <img class="fabric_img" src="<?= $row['fabric'][$value]['fabric_img_url'] ?>"/>
-                        </div>
-                        <br>
-                        <br>
-                        <h5>
-                            <?= $row['fabric'][$value]['category'] ?>
-                        </h5>
-                        <br>
-                        <br>
-                    </td>
-                <?php } ?>
-                <?php foreach ($tbl as $value) { ?>
-
-                    <td>
-                        <div class="pattern_img_parent">
-                            <img class="pattern_img" src="<?= $row['patterns'][$value]['pattern_img_url'] ?>" alt=""/>
-                        </div>
-
-                        <h3>
-                            <?= $row['patterns'][$value]['company'] ?>
-                            <?= $row['patterns'][$value]['pattern_nr'] ?>
-                        </h3>
-
-                        <p>
-                            <?= $row['patterns'][$value]['collection'] ?>
-                        </p>
-
-                    </td>
 
 
-
-                </tr>
-            <?php } ?>
             </tbody>
         </table>
     </div>
