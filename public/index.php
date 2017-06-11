@@ -3,6 +3,7 @@ use App\Controllers\Controller;
 use App\Database;
 use App\Models\PatternModel;
 use App\Models\FabricModel;
+use App\Models\PairingModel;
 
 // Sökväg till grundmappen i projektet --- this is a constant in PHP, built-in the language
 $baseDir = __DIR__ . '/..';
@@ -36,11 +37,9 @@ $db = new Database($pdo);
 
 $fabricModel = new FabricModel($db);
 $patternModel = new PatternModel($db);
+$pairingModel = new PairingModel($db);
 
-//$patterns = $db->getAllOrder('patterns');
-$pairedFabrics = $db->getAll('fabrics_patterns');
-$viewData = $fabricModel->getAllWithPatterns(); // loop through this guy in views/index
-//$stash = $db->getAll('fabrics_patterns');
+$pairedFabrics = $fabricModel->getAllWithPatterns();
 
 // Routing
 $controller = new Controller($baseDir, $db);
@@ -73,6 +72,10 @@ else {
 switch ($url) {
     case '/':
         require $baseDir . '/views/index.php';
+        break;
+
+    case '/do-pairing-delete':
+        $deletePairing = $pairingModel->delete($_GET['id']);
         break;
 
     case '/fabrics':

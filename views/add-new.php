@@ -120,7 +120,7 @@
                 <div class="form-group row">
                     <label for="fabric ideas" class="col-2 col-form-label">Could be used with following fabric(s) from my stash...</label>
                     <div class="col-10">
-                        <input class="form-control" type="text" placeholder="Ex: 25, 30" name="fabric_id">
+                        <input class="form-control" type="text" placeholder="Ex: 25, 30" >
                     </div>
                 </div>
 

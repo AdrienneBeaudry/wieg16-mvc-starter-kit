@@ -114,5 +114,4 @@ class Database {
         $rows = $stm->fetchAll(PDO::FETCH_ASSOC);
         return ($success) ? $rows : [];
     }
-
 }

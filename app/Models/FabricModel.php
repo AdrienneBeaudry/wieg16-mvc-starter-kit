@@ -13,7 +13,6 @@ use App\Database;
 
 class FabricModel extends Model
 {
-
     protected $table = 'fabrics';
 
     public function getAllWithPatterns() {

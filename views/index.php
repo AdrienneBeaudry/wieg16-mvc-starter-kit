@@ -66,7 +66,7 @@
     <div class="row">
         <table>
             <tbody>
-            <?php foreach ($viewData as $row) { ?>
+            <?php foreach ($pairedFabrics as $row) { ?>
             <tr>
                 <td>
                     <br>
@@ -81,11 +81,15 @@
                     <br>
                     <br>
                 </td>
+
                 <td>
                     <?php foreach ($row['patterns'] as $pattern) { ?>
+
                         <div class="pattern_img_parent">
                             <img class="pattern_img" src="<?= $pattern['pattern_img_url'] ?>"/>
                         </div>
+                        <a class="btn btn-info" href="/update-pairing?id=<?= $pattern['id']; ?>">Update</a>
+                        <a class="btn btn-danger" href="/do-pairing-delete?id=<?= $pattern['id']; ?>">Delete</a>
                     <?php } ?>
                 </td>
             </tr>
