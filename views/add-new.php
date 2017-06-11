@@ -120,7 +120,17 @@
                 <div class="form-group row">
                     <label for="fabric ideas" class="col-2 col-form-label">Could be used with following fabric(s) from my stash...</label>
                     <div class="col-10">
-                        <input class="form-control" type="text" placeholder="Ex: 25, 30" >
+                        <select class="form-control" name="id[]" multiple="multiple">
+                            <?php foreach ($fabrics as $fabric) { ?>
+                            <option value="<?= $fabric['id'] ?>" >
+                                <tr>
+                                    <td>⫸ <?= $fabric['category']?></td>
+                                    <td>⫸ <?= $fabric['composition']?></td>
+                                    <td>⫸ <?= $fabric['amount_meter']?></td>
+                                </tr>
+                            </option>
+                            <?php }?>
+                        </select>
                     </div>
                 </div>
 
@@ -166,9 +176,19 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="id" class="col-2 col-form-label">Intended for Pattern #</label>
+                    <label for="id" class="col-2 col-form-label">Intended for the following patterns from my stash...</label>
                     <div class="col-10">
-                        <input class="form-control" type="text" placeholder="Ex: V5689" name="id">
+                        <select class="form-control" name="id[]" multiple="multiple">
+                            <?php foreach ($patterns as $pattern) { ?>
+                                <option value="<?= $pattern['id'] ?>" >
+                                    <tr>
+                                        <td>⫸ <?= $pattern['company']?></td>
+                                        <td>⫸ <?= $pattern['pattern_nr']?></td>
+                                        <td>⫸ <?= $pattern['collection']?></td>
+                                    </tr>
+                                </option>
+                            <?php }?>
+                        </select>
                     </div>
                 </div>
 
