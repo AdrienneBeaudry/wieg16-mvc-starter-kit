@@ -64,6 +64,11 @@ abstract class Model
         return $this->db->delete($this->table, $id);
     }
 
+    public function deletePairing($fabric_id, $pattern_id)
+    {
+        return $this->db->deletePairing($this->table, $fabric_id, $pattern_id);
+    }
+
     public function update($id, $data)
     {
         return $this->db->update($this->table, $id, $data);

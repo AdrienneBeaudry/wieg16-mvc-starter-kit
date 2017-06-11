@@ -91,6 +91,15 @@ class Database {
         //return ($success) ? $id : [];
     }
 
+    public function deletePairing($table, $fabric_id, $pattern_id){
+        $stm = $this->pdo->prepare("DELETE FROM $table WHERE fabric_id = :fabric_id AND pattern_id = :pattern_id");
+        $stm->bindValue(':fabric_id', $fabric_id);
+        $stm->bindValue(':pattern_id', $pattern_id);
+        $status = $stm->execute();
+        return $status;
+        //return ($success) ? $fabric_id : [];
+    }
+
     //gets all patterns related to a particular fabric
     public function getRelatedPatterns($id) {
         $stm = $this->pdo->prepare("SELECT * FROM patterns 

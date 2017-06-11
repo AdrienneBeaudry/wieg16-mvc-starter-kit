@@ -75,7 +75,8 @@ switch ($url) {
         break;
 
     case '/do-pairing-delete':
-        $deletePairing = $pairingModel->delete($_GET['id']);
+        $deletePairing = $pairingModel->deletePairing($_GET['fabric_id'], $_GET['pattern_id']);
+        header('Location: /');
         break;
 
     case '/fabrics':

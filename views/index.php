@@ -88,8 +88,8 @@
                         <div class="pattern_img_parent">
                             <img class="pattern_img" src="<?= $pattern['pattern_img_url'] ?>"/>
                         </div>
-                        <a class="btn btn-info" href="/update-pairing?id=<?= $pattern['id']; ?>">Update</a>
-                        <a class="btn btn-danger" href="/do-pairing-delete?id=<?= $pattern['id']; ?>">Delete</a>
+                        <a class="btn btn-info" href="/update-pairing?fabric_id=<?= $pattern['fabric_id']; ?>&pattern_id=<?= $pattern['pattern_id']; ?>">Update</a>
+                        <a class="btn btn-danger" href="/do-pairing-delete?fabric_id=<?= $pattern['fabric_id']; ?>&pattern_id=<?= $pattern['pattern_id']; ?>">Delete</a>
                     <?php } ?>
                 </td>
             </tr>
