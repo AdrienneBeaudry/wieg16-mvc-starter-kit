@@ -97,7 +97,19 @@ switch ($url) {
 
     case '/save-new-pattern':
         $patternModel = new patternModel($db);
-        $patternId = $patternModel->create($_POST);
+        $patternId = $patternModel->create([
+            'pattern_nr' => $_POST['pattern_nr'],
+            'company' => $_POST['company'],
+            'collection' => $_POST['collection'],
+            'recommended_fabrics' => $_POST['recommended_fabrics'],
+            'season' => $_POST['season'],
+            'pattern_img_url' => $_POST['pattern_img_url']
+            ]);
+
+        foreach ($_POST['paired'] as $paired) {
+            $db->create('fabrics_patterns', ['pattern_id' => $patternId, 'fabric_id' => $paired]);
+        }
+
         header('Location:/patterns');
         break;
 
@@ -106,6 +118,7 @@ switch ($url) {
         $fabricId = $fabricModel->create([
             'category' => $_POST['category'],
             'composition' => $_POST['composition'],
+            'amount_meter' => $_POST['amount_meter'],
             'fabric_img_url' => $_POST['fabric_img_url'],
         ]);
 

@@ -97,7 +97,8 @@
                 <div class="form-group row">
                     <label for="recommended_fabrics" class="col-2 col-form-label">Recommended Fabrics</label>
                     <div class="col-10">
-                        <input class="form-control" type="text" placeholder="Ex: Viscose, Crêpe de chine, Natural fibers in medium to lightweight" name="recommended_fabrics">
+                        <input class="form-control" type="text" placeholder="Ex: Viscose, Crêpe de chine, Natural fibers in medium to lightweight"
+                               name="recommended_fabrics">
                     </div>
                 </div>
 
@@ -120,7 +121,7 @@
                 <div class="form-group row">
                     <label for="fabric ideas" class="col-2 col-form-label">Could be used with following fabric(s) from my stash...</label>
                     <div class="col-10">
-                        <select class="form-control" name="paired" multiple="multiple">
+                        <select class="form-control" name="paired[]" multiple="multiple">
                             <?php foreach ($fabrics as $fabric) { ?>
                             <option value="<?= $fabric['id'] ?>" >
                                 <tr>
@@ -164,6 +165,14 @@
                     <div class="col-10">
                         <input class="form-control" type="text" placeholder="Ex: 98% Cotton, 2% Spandex"
                                name="composition">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="amount_meter" class="col-2 col-form-label">Amount (in meters)</label>
+                    <div class="col-10">
+                        <input class="form-control" type="text" placeholder="Ex: 1.8"
+                               name="amount_meter">
                     </div>
                 </div>
 
