@@ -171,6 +171,7 @@ switch ($url) {
         $updateFabric = $fabricModel->update($_POST['id'], [
             'category' => $_POST['category'],
             'composition' => $_POST['composition'],
+            'amount_meter' => $_POST['amount_meter'],
             'fabric_img_url' => $_POST['fabric_img_url']
         ]);
         header('Location: /fabrics');
@@ -178,7 +179,6 @@ switch ($url) {
 
     case '/do-pattern-update':
         $updatePattern = $patternModel->update($_POST['id'], [
-            'fabric_id' => $_POST['fabric_id'],
             'pattern_nr' => $_POST['pattern_nr'],
             'company' => $_POST['company'],
             'collection' => $_POST['collection'],
