@@ -71,7 +71,10 @@ else {
 
 switch ($url) {
     case '/':
+        require $baseDir . '/views/header.php';
+        require $baseDir . '/views/nav.php';
         require $baseDir . '/views/index.php';
+        require $baseDir . '/views/footer.php';
         break;
 
     case '/do-pairing-delete':
@@ -81,18 +84,30 @@ switch ($url) {
 
     case '/fabrics':
         $fabrics = $fabricModel->getAllOrder();
+
+        require $baseDir . '/views/header.php';
+        require $baseDir . '/views/nav.php';
         require $baseDir . '/views/fabrics.php';
+        require $baseDir . '/views/footer.php';
         break;
 
     case '/patterns':
         $patterns = $patternModel->getAllOrder();
+
+        require $baseDir . '/views/header.php';
+        require $baseDir . '/views/nav.php';
         require $baseDir . '/views/patterns.php';
+        require $baseDir . '/views/footer.php';
         break;
 
     case '/create':
         $fabrics = $fabricModel->getAll();
         $patterns = $patternModel->getAll();
+
+        require $baseDir . '/views/header.php';
+        require $baseDir . '/views/nav.php';
         require $baseDir . '/views/add-new.php';
+        require $baseDir . '/views/footer.php';
         break;
 
     case '/save-new-pattern':
@@ -138,12 +153,18 @@ switch ($url) {
 
     case '/update-fabric':
         $oneFabric = $fabricModel->getById($_GET['id']);
+        require $baseDir . '/views/header.php';
+        require $baseDir . '/views/nav.php';
         require $baseDir . '/views/update-fabric.php';
+        require $baseDir . '/views/footer.php';
         break;
 
     case '/update-pattern':
         $onePattern = $patternModel->getById($_GET['id']);
+        require $baseDir . '/views/header.php';
+        require $baseDir . '/views/nav.php';
         require $baseDir . '/views/update-pattern.php';
+        require $baseDir . '/views/footer.php';
         break;
 
     case '/do-fabric-update':
