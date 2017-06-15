@@ -103,31 +103,18 @@ switch ($url) {
 
     case '/save-new-fabric':
         $fabricModel = new fabricModel($db);
-        //echo var_dump($_POST['paired']);
-        $bool = true;
-        if ($bool) {
-            $new_var = 'Hi there!';
-        }
-        echo $new_var;
-        var_dump($_POST);
-        $x = ['a'=>2, 'b'=>5, 'f'=>90];
-        var_dump($x);
-        //unset($x['f']);
-        if (isset($x['f'])){
-            unset($x['f']);
-            return $x;
-        }
-        else{};
-        var_dump($x);
+        $fabricId = $fabricModel->create([
+            'category' => $_POST['category'],
+            'composition' => $_POST['composition'],
+            'fabric_img_url' => $_POST['fabric_img_url'],
+        ]);
 
-        //if(isset($_POST['paired'])) {
-          //  $_POST = array_pop($_POST);
-         //   return $_POST;
-       // }
-       // var_dump($_POST);
-        die();
-        //$fabricId = $fabricModel->create($_POST);
-        //header('Location:/save-new-pairing');
+        foreach ($_POST['paired'] as $paired) {
+            $db->create('fabrics_patterns', ['fabric_id' => $fabricId, 'pattern_id' => $paired]);
+        }
+
+        header('Location:/fabrics');
+        break;
         break;
 
     case '/save-new-pairing':
