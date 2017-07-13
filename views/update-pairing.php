@@ -67,12 +67,13 @@
                     <div class="col-10">
                         <select class="form-control" name="paired[]" multiple="multiple">
                             <?php foreach ($fabrics as $fabric) { ?>
-                                <option value="<?= $fabric['id'] ?>">
+                                <option value="<?= $fabric['id'] ?>" <?= isSelected($fabric['id'], $related) ?>>
                                     ⫸ <?= $fabric['category'] ?>
                                     ⫸ <?= $fabric['composition'] ?>
                                     ⫸ <?= $fabric['amount_meter'] ?> m
                                 </option>
                             <?php } ?>
+
                         </select>
                     </div>
                 </div>
@@ -90,7 +91,7 @@
 
 
 
-        <div class="col col-lg-5 col-lg-offset-1 col-md-offset-1 col-md-5 col-sm-12">
+        <div class="col col-lg-5 col-lg-offset-1 col-md-offset-1 col-md-5 col-sm-12" style="display:none">
 
             <form method="post" action="/save-new-fabric" name="add-fabric" id="create-fabric">
                 <div class="row">

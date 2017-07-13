@@ -159,7 +159,7 @@ switch ($url) {
     case '/update-fabric':
         $oneFabric = $fabricModel->getById($_GET['id']);
         $patterns=$patternModel->getAll();
-        //$related = array_map(function($pattern) { return $pattern['id'];}, $db->getRelatedPatterns($_GET['id']));
+        $related = array_map(function($pattern) { return $pattern['id'];}, $db->getRelatedPatterns($_GET['id']));
         require $baseDir . '/views/header.php';
         require $baseDir . '/views/nav.php';
         require $baseDir . '/views/update-fabric.php';
@@ -169,7 +169,7 @@ switch ($url) {
     case '/update-pattern':
         $onePattern = $patternModel->getById($_GET['id']);
         $fabrics=$fabricModel->getAll();
-        //$related = array_map(function($fabric) { return $fabric['id'];}, $db->getRelatedFabrics($_GET['id']));
+        $related = array_map(function($fabric) { return $fabric['id'];}, $db->getRelatedFabrics($_GET['id']));
         require $baseDir . '/views/header.php';
         require $baseDir . '/views/nav.php';
         require $baseDir . '/views/update-pattern.php';
@@ -181,6 +181,7 @@ switch ($url) {
         $fabrics=$fabricModel->getAll();
         $oneFabric = $fabricModel->getById($_GET['fabric_id']);
         $patterns=$patternModel->getAll();
+        $related = array_map(function($fabric) { return $fabric['id'];}, $db->getRelatedFabrics($_GET['id']));
 
         require $baseDir . '/views/header.php';
         require $baseDir . '/views/nav.php';
