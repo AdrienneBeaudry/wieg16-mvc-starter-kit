@@ -12,7 +12,7 @@
 
                     <td>
                         <div class="fabric_img_parent">
-                            <img class="fabric_img" src="<?= $row['fabric_img_url'] ?>"/>
+                            <img class="fabric_img" src="<?= $row['img_url'] ?>"/>
                         </div>
                         <h5>
                             <?= $row['category'] ?>

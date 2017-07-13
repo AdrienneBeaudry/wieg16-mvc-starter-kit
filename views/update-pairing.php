@@ -5,29 +5,33 @@
         <div class="col col-lg-5 col-md-5 col-sm-12">
 
             <form method="post" action="/save-new-pattern" id="reg" name="add-pattern">
+
                 <div class="row">
-                    <h3>Add New Pattern</h3>
+                    <h3>Pattern</h3>
                 </div>
+
+                <img src="<?= $onePattern['img_url'] ?>"/>
+
 
                 <div class="form-group row">
                     <label for="pattern_nr" class="col-2 col-form-label">Pattern #</label>
                     <div class="col-10">
-                        <input class="form-control" type="text" placeholder="Ex: V5689" name="pattern_nr">
+                        <input class="form-control" type="text" value="<?= $onePattern['pattern_nr'] ?>" name="pattern_nr">
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label for="company" class="col-2 col-form-label">Company</label>
                     <div class="col-10">
-                        <input class="form-control" type="text" placeholder="Vogue"
+                        <input class="form-control" type="text" value="<?= $onePattern['company'] ?>"
                                name="company">
                     </div>
                 </div>
 
                 <div class="form-group row">
-                    <label for="collection" class="col-2 col-form-label">Designer</label>
+                    <label for="collection" class="col-2 col-form-label">Collection</label>
                     <div class="col-10">
-                        <input class="form-control" type="text" placeholder="Amazing Fit, Donna Karen New York"
+                        <input class="form-control" type="text" value="<?= $onePattern['collection'] ?>"
                                name="collection">
                     </div>
                 </div>
@@ -36,7 +40,7 @@
                     <label for="recommended_fabrics" class="col-2 col-form-label">Recommended Fabrics</label>
                     <div class="col-10">
                         <input class="form-control" type="text"
-                               placeholder="Ex: Viscose, Crêpe de chine, Natural fibers in medium to lightweight"
+                               value="<?= $onePattern['recommended_fabrics'] ?>"
                                name="recommended_fabrics">
                     </div>
                 </div>
@@ -44,14 +48,14 @@
                 <div class="form-group row">
                     <label for="season" class="col-2 col-form-label">Season</label>
                     <div class="col-10">
-                        <input class="form-control" type="text" placeholder="Ex: SS2017 or FW2016" name="season">
+                        <input class="form-control" type="text" value="<?= $onePattern['season'] ?>" name="season">
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label for="img_url" class="col-c col-form-label">Pattern Image URL</label>
                     <div class="col-10">
-                        <input class="form-control" type="text" placeholder="Ex: https://www.google.com"
+                        <input class="form-control" type="text" value="<?= $onePattern['img_url'] ?>"
                                name="img_url">
                     </div>
                 </div>
@@ -84,16 +88,21 @@
         </div>
 
 
+
+
         <div class="col col-lg-5 col-lg-offset-1 col-md-offset-1 col-md-5 col-sm-12">
 
             <form method="post" action="/save-new-fabric" name="add-fabric" id="create-fabric">
                 <div class="row">
-                    <h3>Add New Fabric</h3>
+                    <h3>Fabric</h3>
                 </div>
+
+                <img src="<?= $oneFabric['img_url'] ?>"/>
+
                 <div class="form-group row">
                     <label for="category" class="col-2 col-form-label">Fabric Name</label>
                     <div class="col-10">
-                        <input class="form-control" type="text" placeholder="Ex: Cotton Batiste, Printed Voile"
+                        <input class="form-control" type="text" value="<?= $oneFabric['category'] ?>"
                                name="category">
                     </div>
                 </div>
@@ -101,7 +110,7 @@
                 <div class="form-group row">
                     <label for="composition" class="col-2 col-form-label">Composition</label>
                     <div class="col-10">
-                        <input class="form-control" type="text" placeholder="Ex: 98% Cotton, 2% Spandex"
+                        <input class="form-control" type="text" value="<?= $oneFabric['composition'] ?>"
                                name="composition">
                     </div>
                 </div>
@@ -109,7 +118,7 @@
                 <div class="form-group row">
                     <label for="amount_meter" class="col-2 col-form-label">Amount (in meters)</label>
                     <div class="col-10">
-                        <input class="form-control" type="text" placeholder="Ex: 1.8"
+                        <input class="form-control" type="text" value="<?= $oneFabric['amount_meter'] ?>"
                                name="amount_meter">
                     </div>
                 </div>
@@ -117,10 +126,11 @@
                 <div class="form-group row">
                     <label for="img_url" class="col-c col-form-label">Fabric Image URL</label>
                     <div class="col-10">
-                        <input class="form-control" type="text" placeholder="Ex: https://www.google.com"
+                        <input class="form-control" type="text" value="<?= $oneFabric['img_url'] ?>"
                                name="img_url">
                     </div>
                 </div>
+
 
                 <div class="form-group row">
                     <label for="id" class="col-2 col-form-label">Intended for the following patterns from my

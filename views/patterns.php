@@ -10,7 +10,7 @@
 
                     <td>
                         <div class="pattern_img_parent">
-                            <img class="pattern_img" src="<?= $row['pattern_img_url'] ?>" alt=""/>
+                            <img class="pattern_img" src="<?= $row['img_url'] ?>" alt=""/>
                         </div>
 
                         <h3>

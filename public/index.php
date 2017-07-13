@@ -123,7 +123,7 @@ switch ($url) {
             'collection' => $_POST['collection'],
             'recommended_fabrics' => $_POST['recommended_fabrics'],
             'season' => $_POST['season'],
-            'pattern_img_url' => $_POST['pattern_img_url']
+            'img_url' => $_POST['img_url']
             ]);
 
         foreach ($_POST['paired'] as $paired) {
@@ -139,7 +139,7 @@ switch ($url) {
             'category' => $_POST['category'],
             'composition' => $_POST['composition'],
             'amount_meter' => $_POST['amount_meter'],
-            'fabric_img_url' => $_POST['fabric_img_url'],
+            'img_url' => $_POST['img_url'],
         ]);
 
         foreach ($_POST['paired'] as $paired) {
@@ -158,7 +158,8 @@ switch ($url) {
 
     case '/update-fabric':
         $oneFabric = $fabricModel->getById($_GET['id']);
-
+        $patterns=$patternModel->getAll();
+        //$related = array_map(function($pattern) { return $pattern['id'];}, $db->getRelatedPatterns($_GET['id']));
         require $baseDir . '/views/header.php';
         require $baseDir . '/views/nav.php';
         require $baseDir . '/views/update-fabric.php';
@@ -168,10 +169,22 @@ switch ($url) {
     case '/update-pattern':
         $onePattern = $patternModel->getById($_GET['id']);
         $fabrics=$fabricModel->getAll();
-        $related = array_map(function($fabric) { return $fabric['id'];}, $db->getRelatedFabrics($_GET['id']));
+        //$related = array_map(function($fabric) { return $fabric['id'];}, $db->getRelatedFabrics($_GET['id']));
         require $baseDir . '/views/header.php';
         require $baseDir . '/views/nav.php';
         require $baseDir . '/views/update-pattern.php';
+        require $baseDir . '/views/footer.php';
+        break;
+
+    case '/update-pairing':
+        $onePattern = $patternModel->getById($_GET['pattern_id']);
+        $fabrics=$fabricModel->getAll();
+        $oneFabric = $fabricModel->getById($_GET['fabric_id']);
+        $patterns=$patternModel->getAll();
+
+        require $baseDir . '/views/header.php';
+        require $baseDir . '/views/nav.php';
+        require $baseDir . '/views/update-pairing.php';
         require $baseDir . '/views/footer.php';
         break;
 
@@ -180,7 +193,7 @@ switch ($url) {
             'category' => $_POST['category'],
             'composition' => $_POST['composition'],
             'amount_meter' => $_POST['amount_meter'],
-            'fabric_img_url' => $_POST['fabric_img_url']
+            'img_url' => $_POST['img_url']
         ]);
         header('Location: /fabrics');
         break;
@@ -192,7 +205,7 @@ switch ($url) {
             'collection' => $_POST['collection'],
             'season' => $_POST['season'],
             'recommended_fabrics' => $_POST['recommended_fabrics'],
-            'pattern_img_url' => $_POST['pattern_img_url']
+            'img_url' => $_POST['img_url']
         ]);
 
         $db->deleteRelated('fabrics_patterns', 'pattern_id', $_POST['id']);
