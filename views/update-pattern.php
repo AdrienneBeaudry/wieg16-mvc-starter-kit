@@ -62,6 +62,14 @@
 
                         <button class="btn btn-danger" id="inline_btn" type="submit" name="id" value="<?= $row['id']; ?>">Delete
                         </button>
+
+                       HERE-- HERE--
+                        <select class="form-control" name="paired[]" multiple="multiple">
+                        <option value="<?= $fabric['id'] ?>" <?= isSelected($fabric['id'], $related) ?>>
+                            <?= $fabric['category']?>
+                            etc
+                        etc
+                        </option>
                     </form-->
                 </td>
 

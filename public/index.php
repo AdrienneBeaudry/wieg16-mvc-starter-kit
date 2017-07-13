@@ -69,6 +69,11 @@ else {
     echo 'Page not found';
 }*/
 
+function isSelected($id, $toMatch){
+    if(!is_array($toMatch)) $toMatch = [$toMatch];
+    return (in_array($id, $toMatch)) ? 'selected="selected"' : '';
+}
+
 switch ($url) {
     case '/':
         require $baseDir . '/views/header.php';
@@ -153,6 +158,7 @@ switch ($url) {
 
     case '/update-fabric':
         $oneFabric = $fabricModel->getById($_GET['id']);
+
         require $baseDir . '/views/header.php';
         require $baseDir . '/views/nav.php';
         require $baseDir . '/views/update-fabric.php';
@@ -161,6 +167,8 @@ switch ($url) {
 
     case '/update-pattern':
         $onePattern = $patternModel->getById($_GET['id']);
+        $fabrics=$fabricModel->getAll();
+        $related = array_map(function($fabric) { return $fabric['id'];}, $db->getRelatedFabrics($_GET['id']));
         require $baseDir . '/views/header.php';
         require $baseDir . '/views/nav.php';
         require $baseDir . '/views/update-pattern.php';
@@ -186,6 +194,12 @@ switch ($url) {
             'recommended_fabrics' => $_POST['recommended_fabrics'],
             'pattern_img_url' => $_POST['pattern_img_url']
         ]);
+
+        $db->deleteRelated('fabrics_patterns', 'pattern_id', $_POST['id']);
+        foreach ($_POST['paired'] as $paired) {
+            $db->create('fabrics_patterns', ['pattern_id' => $_POST['id'], 'fabric_id' => $paired]);
+        }
+
         header('Location: /patterns');
         break;
 

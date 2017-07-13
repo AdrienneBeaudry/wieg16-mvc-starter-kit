@@ -128,6 +128,14 @@ class Database
         //return ($success) ? $fabric_id : [];
     }
 
+
+    public function deleteRelated($table, $column_name, $id) {
+        $stm = $this->pdo->prepare("DELETE FROM $table WHERE $column_name = :related_id");
+        $stm->bindParam(':related_id', $id);
+        $success = $stm->execute();
+        return $success;
+    }
+
     //gets all patterns related to a particular fabric
     public function getRelatedPatterns($id)
     {
